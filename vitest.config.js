@@ -11,6 +11,7 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     include: ['src/tests/**/*.test.js'],
+    setupFiles: ['src/tests/setup.js'],
   },
   resolve: {
     alias: {

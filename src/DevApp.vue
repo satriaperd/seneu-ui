@@ -258,6 +258,7 @@
 import { ref, computed } from 'vue'
 import { useTheme } from './composables/useTheme.js'
 import SeneuIcon from './components/display/SeneuIcon.vue'
+import SeneuButtonShowcase from './dev/SeneuButtonShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -286,7 +287,7 @@ const componentCategories = [
   {
     label: 'Form & Input',
     items: [
-      { id: 'SeneuButton',     name: 'Button',      category: 'Form', ready: false },
+      { id: 'SeneuButton',     name: 'Button',      category: 'Form', ready: true, showcase: SeneuButtonShowcase },
       { id: 'SeneuInput',      name: 'Input',       category: 'Form', ready: false },
       { id: 'SeneuTextarea',   name: 'Textarea',    category: 'Form', ready: false },
       { id: 'SeneuSelect',     name: 'Select',      category: 'Form', ready: false },

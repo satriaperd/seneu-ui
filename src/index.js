@@ -8,7 +8,7 @@ export { useTheme } from './composables/useTheme.js'
 export { default as SeneuIcon } from './components/display/SeneuIcon.vue'
 
 // === Form & Input ===
-// export { default as SeneuButton } from './components/form/SeneuButton.vue'
+export { default as SeneuButton } from './components/form/SeneuButton.vue'
 // export { default as SeneuInput } from './components/form/SeneuInput.vue'
 // export { default as SeneuTextarea } from './components/form/SeneuTextarea.vue'
 // export { default as SeneuSelect } from './components/form/SeneuSelect.vue'

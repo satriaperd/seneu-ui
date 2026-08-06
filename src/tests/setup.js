@@ -1,7 +1,7 @@
 import { vi } from 'vitest'
 
-// jsdom di environment ini tidak provide localStorage standard.
-// Mock lengkap agar useTheme dan komponen lain bisa ditest dengan benar.
+// jsdom in this environment doesn't provide a standard localStorage.
+// Full mock so useTheme and other components can be tested correctly.
 const createLocalStorageMock = () => {
   let store = {}
   return {

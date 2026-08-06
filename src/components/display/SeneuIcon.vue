@@ -2,18 +2,18 @@
 import { computed } from 'vue'
 
 /**
- * Icon dari Material Symbols Rounded.
- * Konsumen wajib load font via Google Fonts atau self-host.
+ * Icon from Material Symbols Rounded.
+ * Consumers must load the font via Google Fonts or self-host it.
  *
  * @see https://fonts.google.com/icons
  */
 const props = defineProps({
-  /** Nama icon Material Symbols (snake_case) */
+  /** Material Symbols icon name (snake_case) */
   name: {
     type: String,
     required: true,
   },
-  /** Ukuran dalam px — juga mengontrol optical size (opsz) */
+  /** Size in px — also controls optical size (opsz) */
   size: {
     type: Number,
     default: 20,
@@ -28,14 +28,14 @@ const props = defineProps({
     type: Number,
     default: 300,
   },
-  /** Grade: fine-tuning berat stroke (-50 sampai 200) */
+  /** Grade: fine-tunes stroke weight (-50 to 200) */
   grade: {
     type: Number,
     default: 0,
   },
   /**
-   * Label aksesibilitas untuk icon yang bermakna.
-   * Jika tidak diisi, icon dianggap dekoratif (aria-hidden).
+   * Accessibility label for meaningful icons.
+   * If omitted, the icon is treated as decorative (aria-hidden).
    */
   label: {
     type: String,

@@ -1,5 +1,5 @@
 // Seneu UI — entry point
-// Semua komponen di-export dari sini
+// All components are exported from here
 
 import './main.css'
 
@@ -28,7 +28,7 @@ export { default as SeneuSelect }   from './components/form/SeneuSelect.vue'
 // export { default as SeneuStepper } from './components/layout/SeneuStepper.vue'
 // export { default as SeneuFooter } from './components/layout/SeneuFooter.vue'
 // export { default as SeneuCarousel } from './components/layout/SeneuCarousel.vue'
-// export { default as SeneuRichTextEditor } from './components/layout/SeneuRichTextEditor.vue' — dibuat dari 0, bukan pakai Tiptap
+// export { default as SeneuRichTextEditor } from './components/layout/SeneuRichTextEditor.vue' — built from scratch, not using Tiptap
 
 // === Data Display ===
 // export { default as SeneuCard } from './components/display/SeneuCard.vue'
@@ -51,5 +51,5 @@ export { default as SeneuSelect }   from './components/form/SeneuSelect.vue'
 // export { default as SeneuSpinner } from './components/feedback/SeneuSpinner.vue'
 // export { default as SeneuConfirmDialog } from './components/feedback/SeneuConfirmDialog.vue'
 
-// Token CSS path — dokumentasikan ke consumer
+// Token CSS path — documented for consumers
 export const tokens = 'seneu-ui/dist/style.css'

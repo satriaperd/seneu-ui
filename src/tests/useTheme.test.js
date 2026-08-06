@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 
-// useTheme punya singleton module-level state (_initialized flag).
-// Setiap describe block re-import module biar state fresh.
+// useTheme has singleton module-level state (_initialized flag).
+// Each describe block re-imports the module to keep state fresh.
 
 function mockMatchMedia(prefersDark = false) {
   window.matchMedia = vi.fn().mockReturnValue({

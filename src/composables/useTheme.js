@@ -2,8 +2,8 @@ import { ref, watch } from 'vue'
 
 const STORAGE_KEY = 'seneu-theme'
 
-// Singleton — satu state untuk seluruh app.
-// Semua panggilan useTheme() berbagi isDark yang sama.
+// Singleton — one state for the whole app.
+// Every useTheme() call shares the same isDark.
 const isDark = ref(false)
 let _initialized = false
 
@@ -24,10 +24,10 @@ function initializeTheme() {
 
   applyClass(isDark.value)
 
-  // Sync ke DOM setiap kali isDark berubah
+  // Sync to the DOM every time isDark changes
   watch(isDark, applyClass)
 
-  // Ikuti perubahan system preference — tapi hanya jika user belum set manual
+  // Follow system preference changes — but only if the user hasn't set an override
   window
     .matchMedia('(prefers-color-scheme: dark)')
     .addEventListener('change', (e) => {
@@ -38,27 +38,27 @@ function initializeTheme() {
 }
 
 /**
- * Composable untuk kontrol tema light/dark.
+ * Composable for light/dark theme control.
  *
  * @example
  * const { isDark, toggle, setTheme } = useTheme()
  *
- * toggle()              // flip antara light dan dark
- * setTheme('dark')      // paksa dark
- * setTheme('light')     // paksa light
- * setTheme('system')    // ikuti preferensi OS, hapus override
+ * toggle()              // flip between light and dark
+ * setTheme('dark')      // force dark
+ * setTheme('light')     // force light
+ * setTheme('system')    // follow OS preference, clear override
  */
 export function useTheme() {
   initializeTheme()
 
-  /** Flip antara light dan dark, simpan ke localStorage. */
+  /** Flip between light and dark, persist to localStorage. */
   function toggle() {
     isDark.value = !isDark.value
     localStorage.setItem(STORAGE_KEY, isDark.value ? 'dark' : 'light')
   }
 
   /**
-   * Set tema secara eksplisit.
+   * Set the theme explicitly.
    * @param {'light' | 'dark' | 'system'} theme
    */
   function setTheme(theme) {

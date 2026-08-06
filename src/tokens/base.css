@@ -1,7 +1,7 @@
 /* ============================================================
    BASE STYLES
-   Minimal reset + typography defaults + focus indicator global.
-   Di-import setelah primitive.css dan semantic.css.
+   Minimal reset + typography defaults + global focus indicator.
+   Imported after primitive.css and semantic.css.
    ============================================================ */
 
 /* --- Minimal reset --- */

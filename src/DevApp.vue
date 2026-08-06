@@ -219,7 +219,7 @@
               </div>
               <div class="dev-theme-api__row">
                 <button class="dev-btn-showcase" @click="setTheme('system')">setTheme('system')</button>
-                <span class="dev-showcase-caption">ikuti OS preference, hapus override</span>
+                <span class="dev-showcase-caption">follow OS preference, clear override</span>
               </div>
             </div>
           </div>
@@ -227,10 +227,10 @@
           <div class="dev-token-section">
             <h2 class="dev-token-section__title">Singleton Behaviour</h2>
             <p style="font-size:var(--font-size-body);color:var(--color-text-muted);line-height:var(--line-height-normal);">
-              Semua komponen yang memanggil <code style="font-family:var(--font-mono);font-size:var(--font-size-small);">useTheme()</code>
-              berbagi <code style="font-family:var(--font-mono);font-size:var(--font-size-small);">isDark</code> yang sama —
-              satu perubahan langsung reflect ke seluruh app.
-              Theme toggle di sidebar kiri menggunakan composable yang sama.
+              Every component that calls <code style="font-family:var(--font-mono);font-size:var(--font-size-small);">useTheme()</code>
+              shares the same <code style="font-family:var(--font-mono);font-size:var(--font-size-small);">isDark</code> —
+              one change instantly reflects across the whole app.
+              The theme toggle in the left sidebar uses the same composable.
             </p>
           </div>
         </template>
@@ -244,8 +244,8 @@
         <template v-else>
           <div class="dev-empty">
             <SeneuIcon name="construction" :size="48" style="color:var(--color-border-muted);" />
-            <p class="dev-empty__title">Komponen belum dibuat</p>
-            <p class="dev-empty__desc">{{ activeItem?.name ?? 'Pilih komponen dari sidebar' }} akan muncul di sini setelah selesai dikerjain.</p>
+            <p class="dev-empty__title">Component not built yet</p>
+            <p class="dev-empty__desc">{{ activeItem?.name ?? 'Select a component from the sidebar' }} will show up here once it's done.</p>
           </div>
         </template>
 

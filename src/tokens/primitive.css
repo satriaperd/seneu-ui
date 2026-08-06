@@ -1,7 +1,7 @@
 /* ============================================================
    PRIMITIVE TOKENS
-   Nilai mentah — JANGAN dipakai langsung di komponen.
-   Semua referensi dari sini harus melalui semantic.css
+   Raw values — DO NOT use directly in components.
+   All references to these must go through semantic.css
    ============================================================ */
 
 :root {

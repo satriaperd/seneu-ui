@@ -1,7 +1,7 @@
 /* ============================================================
    SEMANTIC TOKENS
-   Mengacu ke primitive token. INI yang dipakai di komponen.
-   Penamaan berbasis konteks — bukan berdasarkan nilai.
+   References primitive tokens. THIS is what components use.
+   Named by context — not by value.
    ============================================================ */
 
 /* ============================================================

@@ -1,11 +1,11 @@
 import { describe, it, expect, beforeAll } from 'vitest'
 
-// Placeholder test — verifikasi token CSS variables terdefinisi dengan benar
-// Tests yang lebih substantive akan ditambahkan seiring komponen dibangun
+// Placeholder test — verifies token CSS variables are defined correctly
+// More substantive tests will be added as components are built
 
 describe('Design Tokens', () => {
   beforeAll(() => {
-    // Inject CSS variables ke jsdom environment
+    // Inject CSS variables into the jsdom environment
     document.documentElement.style.setProperty('--color-surface-default', '#FAF8F6')
     document.documentElement.style.setProperty('--color-text-default', '#211610')
     document.documentElement.style.setProperty('--color-surface-brand', '#FC7A1E')

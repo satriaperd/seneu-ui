@@ -172,6 +172,12 @@
   --color-border-warning:     var(--primitive-color-amber-500);
   --color-border-info:        var(--primitive-color-blue-500);
   --color-border-muted:       var(--primitive-color-neutral-300);
+
+  /* --------------------------------------------------
+     COLOR — FOCUS RING
+     -------------------------------------------------- */
+  --color-ring-brand:  rgba(252, 122, 30, 0.2);
+  --color-ring-danger: rgba(229, 62, 62, 0.2);
 }
 
 /* ============================================================
@@ -234,6 +240,12 @@
   --color-border-warning:     var(--primitive-color-amber-400);
   --color-border-info:        var(--primitive-color-blue-400);
   --color-border-muted:       var(--primitive-color-neutral-600);
+
+  /* --------------------------------------------------
+     COLOR — FOCUS RING (dark theme)
+     -------------------------------------------------- */
+  --color-ring-brand:  rgba(253, 146, 65, 0.25);
+  --color-ring-danger: rgba(249, 96, 96, 0.25);
 
   /* --------------------------------------------------
      ELEVATION / SHADOW — dark theme

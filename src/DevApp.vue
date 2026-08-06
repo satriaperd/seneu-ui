@@ -170,17 +170,17 @@
 
           <div class="dev-token-section">
             <h2 class="dev-token-section__title">Accessibility</h2>
-            <div class="dev-icon-row" style="gap: var(--space-6);">
+            <div class="dev-icon-row" style="gap: var(--primitive-space-6);">
               <div>
                 <p class="dev-showcase-caption">Decorative (aria-hidden)</p>
-                <div style="display:flex;align-items:center;gap:var(--space-2);margin-top:var(--space-2);">
+                <div style="display:flex;align-items:center;gap:var(--primitive-space-2);margin-top:var(--primitive-space-2);">
                   <SeneuIcon name="info" :size="20" />
                   <span style="font-size:var(--font-size-body);">No label prop — screen reader ignores it</span>
                 </div>
               </div>
               <div>
                 <p class="dev-showcase-caption">Meaningful (role="img")</p>
-                <div style="display:flex;align-items:center;gap:var(--space-2);margin-top:var(--space-2);">
+                <div style="display:flex;align-items:center;gap:var(--primitive-space-2);margin-top:var(--primitive-space-2);">
                   <SeneuIcon name="warning" :size="20" label="Warning" />
                   <span style="font-size:var(--font-size-body);">label="Warning" → screen reader announces it</span>
                 </div>
@@ -259,6 +259,7 @@ import { ref, computed } from 'vue'
 import { useTheme } from './composables/useTheme.js'
 import SeneuIcon from './components/display/SeneuIcon.vue'
 import SeneuButtonShowcase from './dev/SeneuButtonShowcase.vue'
+import SeneuInputShowcase  from './dev/SeneuInputShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -288,7 +289,7 @@ const componentCategories = [
     label: 'Form & Input',
     items: [
       { id: 'SeneuButton',     name: 'Button',      category: 'Form', ready: true, showcase: SeneuButtonShowcase },
-      { id: 'SeneuInput',      name: 'Input',       category: 'Form', ready: false },
+      { id: 'SeneuInput',      name: 'Input',       category: 'Form', ready: true, showcase: SeneuInputShowcase },
       { id: 'SeneuTextarea',   name: 'Textarea',    category: 'Form', ready: false },
       { id: 'SeneuSelect',     name: 'Select',      category: 'Form', ready: false },
       { id: 'SeneuCheckbox',   name: 'Checkbox',    category: 'Form', ready: false },
@@ -389,7 +390,7 @@ body {
   display: flex;
   align-items: baseline;
   gap: var(--space-inline-tight);
-  padding: var(--space-4) var(--space-4);
+  padding: var(--primitive-space-4) var(--primitive-space-4);
   border-bottom: 1px solid var(--color-border-default);
   flex-shrink: 0;
 }
@@ -410,32 +411,32 @@ body {
 .dev-sidebar__nav {
   flex: 1;
   overflow-y: auto;
-  padding: var(--space-3) 0;
+  padding: var(--primitive-space-3) 0;
   scrollbar-width: thin;
   scrollbar-color: var(--color-border-default) transparent;
 }
 
 .dev-sidebar__group {
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--primitive-space-3);
 }
 
 .dev-sidebar__group-label {
   display: block;
-  padding: var(--space-1) var(--space-4);
+  padding: var(--primitive-space-1) var(--primitive-space-4);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--primitive-space-1);
 }
 
 .dev-sidebar__item {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--primitive-space-2);
   width: 100%;
-  padding: var(--space-1) var(--space-4);
+  padding: var(--primitive-space-1) var(--primitive-space-4);
   font-size: var(--font-size-small);
   color: var(--color-text-default);
   background: transparent;
@@ -473,7 +474,7 @@ body {
 .dev-sidebar__item-dot--wip  { background: var(--color-border-muted); }
 
 .dev-sidebar__footer {
-  padding: var(--space-3) var(--space-4);
+  padding: var(--primitive-space-3) var(--primitive-space-4);
   border-top: 1px solid var(--color-border-default);
   flex-shrink: 0;
 }
@@ -481,9 +482,9 @@ body {
 .dev-theme-toggle {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--primitive-space-2);
   width: 100%;
-  padding: var(--space-2) var(--space-3);
+  padding: var(--primitive-space-2) var(--primitive-space-3);
   font-size: var(--font-size-small);
   color: var(--color-text-muted);
   background: transparent;
@@ -510,7 +511,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-4) var(--space-8);
+  padding: var(--primitive-space-4) var(--primitive-space-8);
   border-bottom: 1px solid var(--color-border-default);
   background: var(--color-surface-raised);
   box-shadow: var(--elevation-surface);
@@ -529,7 +530,7 @@ body {
   margin-top: 2px;
 }
 
-.dev-main__badges { display: flex; gap: var(--space-2); }
+.dev-main__badges { display: flex; gap: var(--primitive-space-2); }
 
 .dev-badge {
   display: inline-block;
@@ -553,7 +554,7 @@ body {
 
 .dev-main__content {
   flex: 1;
-  padding: var(--space-8);
+  padding: var(--primitive-space-8);
   overflow-y: auto;
 }
 
@@ -563,7 +564,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-3);
+  gap: var(--primitive-space-3);
   min-height: 320px;
   color: var(--color-text-muted);
   text-align: center;
@@ -582,7 +583,7 @@ body {
 
 /* ── Token preview ───────────────────────────────── */
 .dev-token-section {
-  margin-bottom: var(--space-10);
+  margin-bottom: var(--primitive-space-10);
 }
 
 .dev-token-section__title {
@@ -591,22 +592,22 @@ body {
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wide);
-  margin-bottom: var(--space-4);
-  padding-bottom: var(--space-2);
+  margin-bottom: var(--primitive-space-4);
+  padding-bottom: var(--primitive-space-2);
   border-bottom: 1px solid var(--color-border-default);
 }
 
 .dev-color-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: var(--primitive-space-3);
 }
 
 .dev-color-swatch {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--primitive-space-1);
 }
 
 .dev-color-swatch__block {
@@ -625,7 +626,7 @@ body {
 .dev-elevation-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-6);
+  gap: var(--primitive-space-6);
 }
 
 .dev-elevation-card {
@@ -644,14 +645,14 @@ body {
 .dev-radius-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-6);
+  gap: var(--primitive-space-6);
 }
 
 .dev-radius-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--primitive-space-2);
 }
 
 .dev-radius-card__box {
@@ -670,13 +671,13 @@ body {
 .dev-type-stack {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--primitive-space-3);
 }
 
 .dev-type-row {
   display: flex;
   align-items: baseline;
-  gap: var(--space-4);
+  gap: var(--primitive-space-4);
 }
 
 .dev-type-row__label {
@@ -691,13 +692,13 @@ body {
 .dev-icon-prop-grid {
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--primitive-space-6);
 }
 
 .dev-icon-prop-row {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--primitive-space-6);
 }
 
 .dev-icon-prop-row__label {
@@ -712,14 +713,14 @@ body {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--space-4);
+  gap: var(--primitive-space-4);
 }
 
 .dev-icon-cell {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-1);
+  gap: var(--primitive-space-1);
 }
 
 .dev-icon-cell__label {
@@ -731,15 +732,15 @@ body {
 .dev-icon-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-3);
+  gap: var(--primitive-space-3);
 }
 
 .dev-icon-tile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-1);
-  padding: var(--space-3);
+  gap: var(--primitive-space-1);
+  padding: var(--primitive-space-3);
   border-radius: var(--radius-element);
   border: 1px solid var(--color-border-default);
   background: var(--color-surface-raised);
@@ -763,14 +764,14 @@ body {
 .dev-theme-state {
   display: flex;
   align-items: center;
-  gap: var(--space-6);
+  gap: var(--primitive-space-6);
 }
 
 .dev-theme-state__indicator {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-6);
+  gap: var(--primitive-space-3);
+  padding: var(--primitive-space-4) var(--primitive-space-6);
   border-radius: var(--radius-container);
   font-size: var(--font-size-lead);
   font-weight: var(--font-weight-medium);
@@ -791,7 +792,7 @@ body {
   font-family: var(--font-mono);
   font-size: var(--font-size-body);
   color: var(--color-text-muted);
-  padding: var(--space-2) var(--space-3);
+  padding: var(--primitive-space-2) var(--primitive-space-3);
   background: var(--color-surface-raised);
   border-radius: var(--radius-element);
   border: 1px solid var(--color-border-default);
@@ -800,13 +801,13 @@ body {
 .dev-theme-api {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--primitive-space-3);
 }
 
 .dev-theme-api__row {
   display: flex;
   align-items: center;
-  gap: var(--space-4);
+  gap: var(--primitive-space-4);
 }
 
 .dev-btn-showcase {
@@ -816,7 +817,7 @@ body {
   background: var(--color-surface-brand-subtle);
   border: 1px solid var(--color-border-brand);
   border-radius: var(--radius-element);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--primitive-space-2) var(--primitive-space-4);
   cursor: pointer;
   transition: all var(--duration-fast) var(--easing-standard);
   white-space: nowrap;

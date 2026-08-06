@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, useId } from 'vue'
 import SeneuIcon from '../display/SeneuIcon.vue'
 
 defineOptions({ inheritAttrs: false })
@@ -26,8 +26,6 @@ const props = defineProps({
   error: { type: String, default: '' },
   /** Disables the field entirely */
   disabled: { type: Boolean, default: false },
-  /** Shows a spinner in place of the dot — for async selection */
-  loading: { type: Boolean, default: false },
   /** Controls dot and label size */
   size: {
     type: String,
@@ -40,10 +38,9 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'change'])
 
-let _counter = 0
-const radioId = computed(() => props.id || `seneu-radio-${++_counter}`)
+const _uid = useId()
+const radioId = computed(() => props.id || _uid)
 
-const iconSize = computed(() => ({ sm: 10, base: 12, lg: 14 }[props.size]))
 const isChecked = computed(() => props.modelValue === props.value)
 
 function onChange(e) {
@@ -62,7 +59,6 @@ function onChange(e) {
         {
           'seneu-radio--error':    !!error,
           'seneu-radio--disabled': disabled,
-          'seneu-radio--loading':  loading,
         },
       ]"
     >
@@ -73,22 +69,13 @@ function onChange(e) {
           class="seneu-radio__input"
           :name="name"
           :checked="isChecked"
-          :disabled="disabled || loading"
+          :disabled="disabled"
           :aria-describedby="(hint || error) ? `${radioId}-desc` : undefined"
           :aria-invalid="error ? 'true' : undefined"
-          :aria-busy="loading || undefined"
           v-bind="$attrs"
           @change="onChange"
         />
-        <span class="seneu-radio__dot">
-          <SeneuIcon
-            v-if="loading"
-            name="progress_activity"
-            :size="iconSize"
-            class="seneu-radio__spinner"
-            aria-hidden="true"
-          />
-        </span>
+        <span class="seneu-radio__dot" />
       </span>
 
       <span v-if="description" class="seneu-radio__text">
@@ -140,10 +127,6 @@ function onChange(e) {
   cursor:  not-allowed;
 }
 
-.seneu-radio--loading {
-  cursor: wait;
-}
-
 /* ── Dot ───────────────────────────────────────────────────── */
 .seneu-radio__wrap {
   position:        relative;
@@ -171,9 +154,8 @@ function onChange(e) {
   justify-content: center;
   width:           100%;
   height:          100%;
-  color:           var(--color-text-on-brand);
   background:      var(--color-surface-raised);
-  border:          2px solid var(--color-border-interactive);
+  border:          2px solid var(--color-border-default);
   border-radius:   var(--radius-circle);
   transition:
     border-color     var(--duration-fast) var(--easing-standard),
@@ -186,7 +168,7 @@ function onChange(e) {
   border-color: var(--color-border-danger);
 }
 
-.seneu-radio:not(.seneu-radio--disabled):not(.seneu-radio--loading):hover .seneu-radio__dot {
+.seneu-radio:not(.seneu-radio--disabled):hover .seneu-radio__dot {
   border-color: var(--color-border-focus);
 }
 
@@ -213,19 +195,6 @@ function onChange(e) {
 .seneu-radio--error .seneu-radio__input:focus-visible ~ .seneu-radio__dot {
   border-color: var(--color-border-danger);
   box-shadow:   0 0 0 3px var(--color-ring-danger);
-}
-
-.seneu-radio--loading .seneu-radio__dot {
-  color:        var(--color-text-muted);
-  border-color: var(--color-border-default);
-}
-
-@keyframes seneu-spin {
-  to { transform: rotate(360deg); }
-}
-
-.seneu-radio__spinner {
-  animation: seneu-spin 0.8s linear infinite;
 }
 
 /* ── Label / description ──────────────────────────────────── */
@@ -264,9 +233,4 @@ function onChange(e) {
 
 .seneu-radio-field__message--hint  { color: var(--color-text-muted);  }
 .seneu-radio-field__message--error { color: var(--color-text-danger); }
-
-/* ── Reduced motion ────────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .seneu-radio__spinner { animation-duration: 0.01ms; }
-}
 </style>

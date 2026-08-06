@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, useId } from 'vue'
 import SeneuIcon from '../display/SeneuIcon.vue'
 
 defineOptions({ inheritAttrs: false })
@@ -38,8 +38,8 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'change'])
 
-let _counter = 0
-const toggleId = computed(() => props.id || `seneu-toggle-${++_counter}`)
+const _uid = useId()
+const toggleId = computed(() => props.id || _uid)
 
 const iconSize = computed(() => ({ sm: 9, base: 11, lg: 13 }[props.size]))
 
@@ -166,7 +166,7 @@ function onChange(e) {
 .seneu-toggle__track {
   display:       block;
   border-radius: var(--radius-pill);
-  background:    var(--color-border-interactive);
+  background:    var(--color-border-muted);
   position:      relative;
   transition:    background-color var(--duration-normal) var(--easing-standard);
 }

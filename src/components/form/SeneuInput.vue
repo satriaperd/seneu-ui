@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, useId } from 'vue'
 import SeneuIcon from '../display/SeneuIcon.vue'
 
 /**
@@ -50,8 +50,8 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'clear'])
 
-let _counter = 0
-const inputId = computed(() => props.id || `seneu-input-${++_counter}`)
+const _uid = useId()
+const inputId = computed(() => props.id || _uid)
 
 const showPassword = ref(false)
 const isPassword   = computed(() => props.type === 'password')

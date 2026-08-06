@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref, watch, onMounted } from 'vue'
+import { computed, ref, watch, onMounted, useId } from 'vue'
 import SeneuIcon from '../display/SeneuIcon.vue'
 
 defineOptions({ inheritAttrs: false })
@@ -29,8 +29,6 @@ const props = defineProps({
   error: { type: String, default: '' },
   /** Disables the field entirely */
   disabled: { type: Boolean, default: false },
-  /** Shows a spinner in place of the check mark — for async toggles */
-  loading: { type: Boolean, default: false },
   /** Controls box and label size */
   size: {
     type: String,
@@ -43,8 +41,8 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue', 'change'])
 
-let _counter = 0
-const checkboxId = computed(() => props.id || `seneu-checkbox-${++_counter}`)
+const _uid = useId()
+const checkboxId = computed(() => props.id || _uid)
 
 const iconSize = computed(() => ({ sm: 12, base: 14, lg: 16 }[props.size]))
 
@@ -85,7 +83,6 @@ watch(() => props.indeterminate, v => { if (inputRef.value) inputRef.value.indet
         {
           'seneu-checkbox--error':    !!error,
           'seneu-checkbox--disabled': disabled,
-          'seneu-checkbox--loading':  loading,
         },
       ]"
     >
@@ -96,23 +93,15 @@ watch(() => props.indeterminate, v => { if (inputRef.value) inputRef.value.indet
           type="checkbox"
           class="seneu-checkbox__input"
           :checked="isChecked"
-          :disabled="disabled || loading"
+          :disabled="disabled"
           :aria-describedby="(hint || error) ? `${checkboxId}-desc` : undefined"
           :aria-invalid="error ? 'true' : undefined"
-          :aria-busy="loading || undefined"
           v-bind="$attrs"
           @change="onChange"
         />
         <span class="seneu-checkbox__box">
           <SeneuIcon
-            v-if="loading"
-            name="progress_activity"
-            :size="iconSize"
-            class="seneu-checkbox__spinner"
-            aria-hidden="true"
-          />
-          <SeneuIcon
-            v-else-if="indeterminate"
+            v-if="indeterminate"
             name="remove"
             :size="iconSize"
             aria-hidden="true"
@@ -176,10 +165,6 @@ watch(() => props.indeterminate, v => { if (inputRef.value) inputRef.value.indet
   cursor:  not-allowed;
 }
 
-.seneu-checkbox--loading {
-  cursor: wait;
-}
-
 /* ── Box ───────────────────────────────────────────────────── */
 .seneu-checkbox__wrap {
   position:     relative;
@@ -209,7 +194,7 @@ watch(() => props.indeterminate, v => { if (inputRef.value) inputRef.value.indet
   height:          100%;
   color:           transparent;
   background:      var(--color-surface-raised);
-  border:          2px solid var(--color-border-interactive);
+  border:          2px solid var(--color-border-default);
   border-radius:   var(--radius-subtle);
   transition:
     border-color     var(--duration-fast) var(--easing-standard),
@@ -222,7 +207,7 @@ watch(() => props.indeterminate, v => { if (inputRef.value) inputRef.value.indet
   border-color: var(--color-border-danger);
 }
 
-.seneu-checkbox:not(.seneu-checkbox--disabled):not(.seneu-checkbox--loading):hover .seneu-checkbox__box {
+.seneu-checkbox:not(.seneu-checkbox--disabled):hover .seneu-checkbox__box {
   border-color: var(--color-border-focus);
 }
 
@@ -246,21 +231,6 @@ watch(() => props.indeterminate, v => { if (inputRef.value) inputRef.value.indet
 .seneu-checkbox--error .seneu-checkbox__input:focus-visible ~ .seneu-checkbox__box {
   border-color: var(--color-border-danger);
   box-shadow:   0 0 0 3px var(--color-ring-danger);
-}
-
-/* Loading spinner keeps neutral colors, not the brand fill */
-.seneu-checkbox--loading .seneu-checkbox__box {
-  color:        var(--color-text-muted);
-  background:   var(--color-surface-raised);
-  border-color: var(--color-border-default);
-}
-
-@keyframes seneu-spin {
-  to { transform: rotate(360deg); }
-}
-
-.seneu-checkbox__spinner {
-  animation: seneu-spin 0.8s linear infinite;
 }
 
 /* ── Label / description ──────────────────────────────────── */
@@ -299,9 +269,4 @@ watch(() => props.indeterminate, v => { if (inputRef.value) inputRef.value.indet
 
 .seneu-checkbox-field__message--hint  { color: var(--color-text-muted);  }
 .seneu-checkbox-field__message--error { color: var(--color-text-danger); }
-
-/* ── Reduced motion ────────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .seneu-checkbox__spinner { animation-duration: 0.01ms; }
-}
 </style>

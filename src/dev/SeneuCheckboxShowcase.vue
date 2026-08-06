@@ -7,7 +7,6 @@ import DevShowcaseSection from './DevShowcaseSection.vue'
 const single    = ref(false)
 const withDesc  = ref(true)
 const terms     = ref(false)
-const saving    = ref(true)
 const selectAll = ref(false)
 const fruits    = ref(['apple'])
 </script>
@@ -61,12 +60,6 @@ const fruits    = ref(['apple'])
           label="Gua setuju sama Syarat & Ketentuan"
           error="Wajib dicentang buat lanjut."
         />
-      </div>
-    </DevShowcaseSection>
-
-    <DevShowcaseSection title="Loading">
-      <div class="showcase-col">
-        <SeneuCheckbox v-model="saving" label="Auto-save" :loading="true" hint="Lagi nyimpen preferensi lo…" />
       </div>
     </DevShowcaseSection>
 

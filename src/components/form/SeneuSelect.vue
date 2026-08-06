@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, useId } from 'vue'
 import SeneuIcon from '../display/SeneuIcon.vue'
 
 /**
@@ -42,8 +42,8 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue'])
 
-let _counter = 0
-const selectId = computed(() => props.id || `seneu-select-${++_counter}`)
+const _uid = useId()
+const selectId = computed(() => props.id || _uid)
 
 const iconSize = computed(() => ({ sm: 16, base: 18, lg: 20 }[props.size]))
 

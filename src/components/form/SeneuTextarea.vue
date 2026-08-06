@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, useId } from 'vue'
 import SeneuIcon from '../display/SeneuIcon.vue'
 
 /**
@@ -50,8 +50,8 @@ const props = defineProps({
 
 const emit = defineEmits(['update:modelValue'])
 
-let _counter = 0
-const textareaId = computed(() => props.id || `seneu-textarea-${++_counter}`)
+const _uid = useId()
+const textareaId = computed(() => props.id || _uid)
 
 const iconSize = computed(() => ({ sm: 14, base: 16, lg: 18 }[props.size]))
 

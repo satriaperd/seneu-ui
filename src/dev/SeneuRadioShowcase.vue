@@ -7,7 +7,6 @@ import DevShowcaseSection from './DevShowcaseSection.vue'
 const plan     = ref('pro')
 const shipping = ref('standard')
 const region   = ref('')
-const syncing  = ref('cloud')
 </script>
 
 <template>
@@ -45,13 +44,6 @@ const syncing  = ref('cloud')
       <div class="showcase-col">
         <SeneuRadio v-model="region" value="jkt" name="region" label="Jakarta" hint="Estimasi pengiriman tercepat." />
         <SeneuRadio v-model="region" value="sby" name="region" label="Surabaya" error="Region ini lagi nggak available." />
-      </div>
-    </DevShowcaseSection>
-
-    <DevShowcaseSection title="Loading">
-      <div class="showcase-col">
-        <SeneuRadio v-model="syncing" value="cloud" name="sync" label="Cloud sync" :loading="true" />
-        <SeneuRadio v-model="syncing" value="local" name="sync" label="Local only" />
       </div>
     </DevShowcaseSection>
 

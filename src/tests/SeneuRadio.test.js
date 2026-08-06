@@ -123,20 +123,3 @@ describe('SeneuRadio — hint', () => {
     expect(wrapper.find('.seneu-radio-field__message--hint').exists()).toBe(false)
   })
 })
-
-describe('SeneuRadio — loading', () => {
-  it('shows spinner when loading is true', () => {
-    const wrapper = mount(SeneuRadio, { props: { loading: true } })
-    expect(wrapper.find('.seneu-radio__spinner').exists()).toBe(true)
-  })
-
-  it('disables input while loading', () => {
-    const wrapper = mount(SeneuRadio, { props: { loading: true } })
-    expect(wrapper.find('input').attributes('disabled')).toBeDefined()
-  })
-
-  it('sets aria-busy="true" when loading', () => {
-    const wrapper = mount(SeneuRadio, { props: { loading: true } })
-    expect(wrapper.find('input').attributes('aria-busy')).toBe('true')
-  })
-})

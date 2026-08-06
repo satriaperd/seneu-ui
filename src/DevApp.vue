@@ -262,6 +262,9 @@ import SeneuButtonShowcase   from './dev/SeneuButtonShowcase.vue'
 import SeneuInputShowcase    from './dev/SeneuInputShowcase.vue'
 import SeneuTextareaShowcase from './dev/SeneuTextareaShowcase.vue'
 import SeneuSelectShowcase   from './dev/SeneuSelectShowcase.vue'
+import SeneuCheckboxShowcase from './dev/SeneuCheckboxShowcase.vue'
+import SeneuRadioShowcase    from './dev/SeneuRadioShowcase.vue'
+import SeneuToggleShowcase   from './dev/SeneuToggleShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -294,9 +297,9 @@ const componentCategories = [
       { id: 'SeneuInput',      name: 'Input',       category: 'Form', ready: true, showcase: SeneuInputShowcase },
       { id: 'SeneuTextarea',   name: 'Textarea',    category: 'Form', ready: true, showcase: SeneuTextareaShowcase },
       { id: 'SeneuSelect',     name: 'Select',      category: 'Form', ready: true, showcase: SeneuSelectShowcase },
-      { id: 'SeneuCheckbox',   name: 'Checkbox',    category: 'Form', ready: false },
-      { id: 'SeneuRadio',      name: 'Radio',       category: 'Form', ready: false },
-      { id: 'SeneuToggle',     name: 'Toggle',      category: 'Form', ready: false },
+      { id: 'SeneuCheckbox',   name: 'Checkbox',    category: 'Form', ready: true, showcase: SeneuCheckboxShowcase },
+      { id: 'SeneuRadio',      name: 'Radio',       category: 'Form', ready: true, showcase: SeneuRadioShowcase },
+      { id: 'SeneuToggle',     name: 'Toggle',      category: 'Form', ready: true, showcase: SeneuToggleShowcase },
       { id: 'SeneuDatePicker', name: 'Date Picker', category: 'Form', ready: false },
       { id: 'SeneuFileUpload', name: 'File Upload', category: 'Form', ready: false },
       { id: 'SeneuSearchBar',  name: 'Search Bar',  category: 'Form', ready: false },

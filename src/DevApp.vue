@@ -282,6 +282,8 @@ import SeneuBadgeShowcase from './dev/SeneuBadgeShowcase.vue'
 import SeneuTagShowcase from './dev/SeneuTagShowcase.vue'
 import SeneuEmptyStateShowcase from './dev/SeneuEmptyStateShowcase.vue'
 import SeneuSkeletonShowcase from './dev/SeneuSkeletonShowcase.vue'
+import SeneuAvatarShowcase from './dev/SeneuAvatarShowcase.vue'
+import SeneuStatCardShowcase from './dev/SeneuStatCardShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -344,8 +346,8 @@ const componentCategories = [
       { id: 'SeneuBadge',        name: 'Badge',         category: 'Display', ready: true, showcase: SeneuBadgeShowcase },
       { id: 'SeneuTag',          name: 'Tag',           category: 'Display', ready: true, showcase: SeneuTagShowcase },
       { id: 'SeneuTooltip',      name: 'Tooltip',       category: 'Display', ready: false },
-      { id: 'SeneuAvatar',       name: 'Avatar',        category: 'Display', ready: false },
-      { id: 'SeneuStatCard',     name: 'Stat Card',     category: 'Display', ready: false },
+      { id: 'SeneuAvatar',       name: 'Avatar',        category: 'Display', ready: true, showcase: SeneuAvatarShowcase },
+      { id: 'SeneuStatCard',     name: 'Stat Card',     category: 'Display', ready: true, showcase: SeneuStatCardShowcase },
       { id: 'SeneuChartWrapper', name: 'Chart Wrapper', category: 'Display', ready: false },
       { id: 'SeneuEmptyState',   name: 'Empty State',   category: 'Display', ready: true, showcase: SeneuEmptyStateShowcase },
       { id: 'SeneuSkeleton',     name: 'Skeleton',      category: 'Display', ready: true, showcase: SeneuSkeletonShowcase },

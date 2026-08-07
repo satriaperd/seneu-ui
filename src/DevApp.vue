@@ -269,6 +269,8 @@ import SeneuDatePickerShowcase from './dev/SeneuDatePickerShowcase.vue'
 import SeneuFileUploadShowcase from './dev/SeneuFileUploadShowcase.vue'
 import SeneuSearchBarShowcase from './dev/SeneuSearchBarShowcase.vue'
 import SeneuSidebarShowcase  from './dev/SeneuSidebarShowcase.vue'
+import SeneuTopbarShowcase   from './dev/SeneuTopbarShowcase.vue'
+import SeneuBreadcrumbShowcase from './dev/SeneuBreadcrumbShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -313,8 +315,8 @@ const componentCategories = [
     label: 'Layout & Navigation',
     items: [
       { id: 'SeneuSidebar',         name: 'Sidebar',          category: 'Layout', ready: true, showcase: SeneuSidebarShowcase },
-      { id: 'SeneuTopbar',          name: 'Topbar',           category: 'Layout', ready: false },
-      { id: 'SeneuBreadcrumb',      name: 'Breadcrumb',       category: 'Layout', ready: false },
+      { id: 'SeneuTopbar',          name: 'Topbar',           category: 'Layout', ready: true, showcase: SeneuTopbarShowcase },
+      { id: 'SeneuBreadcrumb',      name: 'Breadcrumb',       category: 'Layout', ready: true, showcase: SeneuBreadcrumbShowcase },
       { id: 'SeneuTabs',            name: 'Tabs',             category: 'Layout', ready: false },
       { id: 'SeneuPagination',      name: 'Pagination',       category: 'Layout', ready: false },
       { id: 'SeneuStepper',         name: 'Stepper',          category: 'Layout', ready: false },

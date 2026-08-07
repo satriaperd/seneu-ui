@@ -21,8 +21,8 @@ export { default as SeneuSearchBar }   from './components/form/SeneuSearchBar.vu
 
 // === Layout & Navigation ===
 export { default as SeneuSidebar } from './components/layout/SeneuSidebar.vue'
-// export { default as SeneuTopbar } from './components/layout/SeneuTopbar.vue'
-// export { default as SeneuBreadcrumb } from './components/layout/SeneuBreadcrumb.vue'
+export { default as SeneuTopbar } from './components/layout/SeneuTopbar.vue'
+export { default as SeneuBreadcrumb } from './components/layout/SeneuBreadcrumb.vue'
 // export { default as SeneuTabs } from './components/layout/SeneuTabs.vue'
 // export { default as SeneuPagination } from './components/layout/SeneuPagination.vue'
 // export { default as SeneuStepper } from './components/layout/SeneuStepper.vue'

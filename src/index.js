@@ -25,9 +25,9 @@ export { default as SeneuTopbar } from './components/layout/SeneuTopbar.vue'
 export { default as SeneuBreadcrumb } from './components/layout/SeneuBreadcrumb.vue'
 export { default as SeneuTabs } from './components/layout/SeneuTabs.vue'
 export { default as SeneuPagination } from './components/layout/SeneuPagination.vue'
-// export { default as SeneuStepper } from './components/layout/SeneuStepper.vue'
-// export { default as SeneuFooter } from './components/layout/SeneuFooter.vue'
-// export { default as SeneuCarousel } from './components/layout/SeneuCarousel.vue'
+export { default as SeneuStepper } from './components/layout/SeneuStepper.vue'
+export { default as SeneuFooter } from './components/layout/SeneuFooter.vue'
+export { default as SeneuCarousel } from './components/layout/SeneuCarousel.vue'
 // export { default as SeneuRichTextEditor } from './components/layout/SeneuRichTextEditor.vue' — built from scratch, not using Tiptap
 
 // === Data Display ===

@@ -273,6 +273,9 @@ import SeneuTopbarShowcase   from './dev/SeneuTopbarShowcase.vue'
 import SeneuBreadcrumbShowcase from './dev/SeneuBreadcrumbShowcase.vue'
 import SeneuTabsShowcase from './dev/SeneuTabsShowcase.vue'
 import SeneuPaginationShowcase from './dev/SeneuPaginationShowcase.vue'
+import SeneuStepperShowcase from './dev/SeneuStepperShowcase.vue'
+import SeneuFooterShowcase from './dev/SeneuFooterShowcase.vue'
+import SeneuCarouselShowcase from './dev/SeneuCarouselShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -321,9 +324,9 @@ const componentCategories = [
       { id: 'SeneuBreadcrumb',      name: 'Breadcrumb',       category: 'Layout', ready: true, showcase: SeneuBreadcrumbShowcase },
       { id: 'SeneuTabs',            name: 'Tabs',             category: 'Layout', ready: true, showcase: SeneuTabsShowcase },
       { id: 'SeneuPagination',      name: 'Pagination',       category: 'Layout', ready: true, showcase: SeneuPaginationShowcase },
-      { id: 'SeneuStepper',         name: 'Stepper',          category: 'Layout', ready: false },
-      { id: 'SeneuFooter',          name: 'Footer',           category: 'Layout', ready: false },
-      { id: 'SeneuCarousel',        name: 'Carousel',         category: 'Layout', ready: false },
+      { id: 'SeneuStepper',         name: 'Stepper',          category: 'Layout', ready: true, showcase: SeneuStepperShowcase },
+      { id: 'SeneuFooter',          name: 'Footer',           category: 'Layout', ready: true, showcase: SeneuFooterShowcase },
+      { id: 'SeneuCarousel',        name: 'Carousel',         category: 'Layout', ready: true, showcase: SeneuCarouselShowcase },
       { id: 'SeneuRichTextEditor',  name: 'Rich Text Editor', category: 'Layout', ready: false },
     ],
   },

@@ -284,6 +284,8 @@ import SeneuEmptyStateShowcase from './dev/SeneuEmptyStateShowcase.vue'
 import SeneuSkeletonShowcase from './dev/SeneuSkeletonShowcase.vue'
 import SeneuAvatarShowcase from './dev/SeneuAvatarShowcase.vue'
 import SeneuStatCardShowcase from './dev/SeneuStatCardShowcase.vue'
+import SeneuTooltipShowcase from './dev/SeneuTooltipShowcase.vue'
+import SeneuTableShowcase from './dev/SeneuTableShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -342,10 +344,10 @@ const componentCategories = [
     label: 'Data Display',
     items: [
       { id: 'SeneuCard',         name: 'Card',          category: 'Display', ready: true, showcase: SeneuCardShowcase },
-      { id: 'SeneuTable',        name: 'Table',         category: 'Display', ready: false },
+      { id: 'SeneuTable',        name: 'Table',         category: 'Display', ready: true, showcase: SeneuTableShowcase },
       { id: 'SeneuBadge',        name: 'Badge',         category: 'Display', ready: true, showcase: SeneuBadgeShowcase },
       { id: 'SeneuTag',          name: 'Tag',           category: 'Display', ready: true, showcase: SeneuTagShowcase },
-      { id: 'SeneuTooltip',      name: 'Tooltip',       category: 'Display', ready: false },
+      { id: 'SeneuTooltip',      name: 'Tooltip',       category: 'Display', ready: true, showcase: SeneuTooltipShowcase },
       { id: 'SeneuAvatar',       name: 'Avatar',        category: 'Display', ready: true, showcase: SeneuAvatarShowcase },
       { id: 'SeneuStatCard',     name: 'Stat Card',     category: 'Display', ready: true, showcase: SeneuStatCardShowcase },
       { id: 'SeneuChartWrapper', name: 'Chart Wrapper', category: 'Display', ready: false },

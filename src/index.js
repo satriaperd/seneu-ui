@@ -32,10 +32,10 @@ export { default as SeneuRichTextEditor } from './components/layout/SeneuRichTex
 
 // === Data Display ===
 export { default as SeneuCard } from './components/display/SeneuCard.vue'
-// export { default as SeneuTable } from './components/display/SeneuTable.vue'
+export { default as SeneuTable } from './components/display/SeneuTable.vue'
 export { default as SeneuBadge } from './components/display/SeneuBadge.vue'
 export { default as SeneuTag } from './components/display/SeneuTag.vue'
-// export { default as SeneuTooltip } from './components/display/SeneuTooltip.vue'
+export { default as SeneuTooltip } from './components/display/SeneuTooltip.vue'
 export { default as SeneuAvatar } from './components/display/SeneuAvatar.vue'
 export { default as SeneuStatCard } from './components/display/SeneuStatCard.vue'
 // export { default as SeneuChartWrapper } from './components/display/SeneuChartWrapper.vue'

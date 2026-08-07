@@ -18,6 +18,7 @@ export default [
         clearInterval: 'readonly',
         URL: 'readonly',
         File: 'readonly',
+        Node: 'readonly',
       },
     },
     rules: {

@@ -28,7 +28,7 @@ export { default as SeneuPagination } from './components/layout/SeneuPagination.
 export { default as SeneuStepper } from './components/layout/SeneuStepper.vue'
 export { default as SeneuFooter } from './components/layout/SeneuFooter.vue'
 export { default as SeneuCarousel } from './components/layout/SeneuCarousel.vue'
-// export { default as SeneuRichTextEditor } from './components/layout/SeneuRichTextEditor.vue' — built from scratch, not using Tiptap
+export { default as SeneuRichTextEditor } from './components/layout/SeneuRichTextEditor.vue'
 
 // === Data Display ===
 // export { default as SeneuCard } from './components/display/SeneuCard.vue'

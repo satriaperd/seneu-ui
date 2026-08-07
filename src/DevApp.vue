@@ -276,6 +276,7 @@ import SeneuPaginationShowcase from './dev/SeneuPaginationShowcase.vue'
 import SeneuStepperShowcase from './dev/SeneuStepperShowcase.vue'
 import SeneuFooterShowcase from './dev/SeneuFooterShowcase.vue'
 import SeneuCarouselShowcase from './dev/SeneuCarouselShowcase.vue'
+import SeneuRichTextEditorShowcase from './dev/SeneuRichTextEditorShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -327,7 +328,7 @@ const componentCategories = [
       { id: 'SeneuStepper',         name: 'Stepper',          category: 'Layout', ready: true, showcase: SeneuStepperShowcase },
       { id: 'SeneuFooter',          name: 'Footer',           category: 'Layout', ready: true, showcase: SeneuFooterShowcase },
       { id: 'SeneuCarousel',        name: 'Carousel',         category: 'Layout', ready: true, showcase: SeneuCarouselShowcase },
-      { id: 'SeneuRichTextEditor',  name: 'Rich Text Editor', category: 'Layout', ready: false },
+      { id: 'SeneuRichTextEditor',  name: 'Rich Text Editor', category: 'Layout', ready: true, showcase: SeneuRichTextEditorShowcase },
     ],
   },
   {

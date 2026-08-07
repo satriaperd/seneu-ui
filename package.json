@@ -1,6 +1,6 @@
 {
   "name": "seneu-ui",
-  "version": "1.12.0",
+  "version": "1.13.0",
   "description": "Vue 3 component library for CMS and admin panel — by Cimang Club",
   "type": "module",
   "main": "./dist/seneu-ui.umd.cjs",

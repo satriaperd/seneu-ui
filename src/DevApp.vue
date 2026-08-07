@@ -280,6 +280,8 @@ import SeneuRichTextEditorShowcase from './dev/SeneuRichTextEditorShowcase.vue'
 import SeneuCardShowcase from './dev/SeneuCardShowcase.vue'
 import SeneuBadgeShowcase from './dev/SeneuBadgeShowcase.vue'
 import SeneuTagShowcase from './dev/SeneuTagShowcase.vue'
+import SeneuEmptyStateShowcase from './dev/SeneuEmptyStateShowcase.vue'
+import SeneuSkeletonShowcase from './dev/SeneuSkeletonShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -345,8 +347,8 @@ const componentCategories = [
       { id: 'SeneuAvatar',       name: 'Avatar',        category: 'Display', ready: false },
       { id: 'SeneuStatCard',     name: 'Stat Card',     category: 'Display', ready: false },
       { id: 'SeneuChartWrapper', name: 'Chart Wrapper', category: 'Display', ready: false },
-      { id: 'SeneuEmptyState',   name: 'Empty State',   category: 'Display', ready: false },
-      { id: 'SeneuSkeleton',     name: 'Skeleton',      category: 'Display', ready: false },
+      { id: 'SeneuEmptyState',   name: 'Empty State',   category: 'Display', ready: true, showcase: SeneuEmptyStateShowcase },
+      { id: 'SeneuSkeleton',     name: 'Skeleton',      category: 'Display', ready: true, showcase: SeneuSkeletonShowcase },
     ],
   },
   {

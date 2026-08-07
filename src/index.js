@@ -39,8 +39,8 @@ export { default as SeneuTag } from './components/display/SeneuTag.vue'
 // export { default as SeneuAvatar } from './components/display/SeneuAvatar.vue'
 // export { default as SeneuStatCard } from './components/display/SeneuStatCard.vue'
 // export { default as SeneuChartWrapper } from './components/display/SeneuChartWrapper.vue'
-// export { default as SeneuEmptyState } from './components/display/SeneuEmptyState.vue'
-// export { default as SeneuSkeleton } from './components/display/SeneuSkeleton.vue'
+export { default as SeneuEmptyState } from './components/display/SeneuEmptyState.vue'
+export { default as SeneuSkeleton } from './components/display/SeneuSkeleton.vue'
 
 // === Feedback & Overlay ===
 // export { default as SeneuAlert } from './components/feedback/SeneuAlert.vue'

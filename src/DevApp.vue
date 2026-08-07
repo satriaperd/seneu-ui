@@ -286,6 +286,7 @@ import SeneuAvatarShowcase from './dev/SeneuAvatarShowcase.vue'
 import SeneuStatCardShowcase from './dev/SeneuStatCardShowcase.vue'
 import SeneuTooltipShowcase from './dev/SeneuTooltipShowcase.vue'
 import SeneuTableShowcase from './dev/SeneuTableShowcase.vue'
+import SeneuChartWrapperShowcase from './dev/SeneuChartWrapperShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -350,7 +351,7 @@ const componentCategories = [
       { id: 'SeneuTooltip',      name: 'Tooltip',       category: 'Display', ready: true, showcase: SeneuTooltipShowcase },
       { id: 'SeneuAvatar',       name: 'Avatar',        category: 'Display', ready: true, showcase: SeneuAvatarShowcase },
       { id: 'SeneuStatCard',     name: 'Stat Card',     category: 'Display', ready: true, showcase: SeneuStatCardShowcase },
-      { id: 'SeneuChartWrapper', name: 'Chart Wrapper', category: 'Display', ready: false },
+      { id: 'SeneuChartWrapper', name: 'Chart Wrapper', category: 'Display', ready: true, showcase: SeneuChartWrapperShowcase },
       { id: 'SeneuEmptyState',   name: 'Empty State',   category: 'Display', ready: true, showcase: SeneuEmptyStateShowcase },
       { id: 'SeneuSkeleton',     name: 'Skeleton',      category: 'Display', ready: true, showcase: SeneuSkeletonShowcase },
     ],

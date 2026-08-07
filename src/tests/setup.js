@@ -20,3 +20,25 @@ vi.stubGlobal('localStorage', createLocalStorageMock())
 // by SeneuFileUpload for image previews.
 if (!globalThis.URL.createObjectURL) globalThis.URL.createObjectURL = vi.fn(() => 'blob:mock-url')
 if (!globalThis.URL.revokeObjectURL) globalThis.URL.revokeObjectURL = vi.fn()
+
+// jsdom doesn't implement ResizeObserver — used by SeneuChartWrapper to
+// keep the chart instance sized to its container.
+if (!globalThis.ResizeObserver) {
+  globalThis.ResizeObserver = class ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+}
+
+// jsdom doesn't implement matchMedia — used by useTheme (and any
+// component that calls it, e.g. SeneuChartWrapper) to read the OS
+// color-scheme preference. Individual tests can still override this
+// with their own vi.fn() when they need to assert specific matches.
+if (!globalThis.matchMedia) {
+  globalThis.matchMedia = vi.fn().mockReturnValue({
+    matches: false,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+  })
+}

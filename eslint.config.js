@@ -19,6 +19,8 @@ export default [
         URL: 'readonly',
         File: 'readonly',
         Node: 'readonly',
+        getComputedStyle: 'readonly',
+        ResizeObserver: 'readonly',
       },
     },
     rules: {

@@ -15,3 +15,8 @@ const createLocalStorageMock = () => {
 }
 
 vi.stubGlobal('localStorage', createLocalStorageMock())
+
+// jsdom doesn't implement the createObjectURL/revokeObjectURL pair used
+// by SeneuFileUpload for image previews.
+if (!globalThis.URL.createObjectURL) globalThis.URL.createObjectURL = vi.fn(() => 'blob:mock-url')
+if (!globalThis.URL.revokeObjectURL) globalThis.URL.revokeObjectURL = vi.fn()

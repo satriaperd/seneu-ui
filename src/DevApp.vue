@@ -266,6 +266,8 @@ import SeneuCheckboxShowcase from './dev/SeneuCheckboxShowcase.vue'
 import SeneuRadioShowcase    from './dev/SeneuRadioShowcase.vue'
 import SeneuToggleShowcase   from './dev/SeneuToggleShowcase.vue'
 import SeneuDatePickerShowcase from './dev/SeneuDatePickerShowcase.vue'
+import SeneuFileUploadShowcase from './dev/SeneuFileUploadShowcase.vue'
+import SeneuSearchBarShowcase from './dev/SeneuSearchBarShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -302,8 +304,8 @@ const componentCategories = [
       { id: 'SeneuRadio',      name: 'Radio',       category: 'Form', ready: true, showcase: SeneuRadioShowcase },
       { id: 'SeneuToggle',     name: 'Toggle',      category: 'Form', ready: true, showcase: SeneuToggleShowcase },
       { id: 'SeneuDatePicker', name: 'Date Picker', category: 'Form', ready: true, showcase: SeneuDatePickerShowcase },
-      { id: 'SeneuFileUpload', name: 'File Upload', category: 'Form', ready: false },
-      { id: 'SeneuSearchBar',  name: 'Search Bar',  category: 'Form', ready: false },
+      { id: 'SeneuFileUpload', name: 'File Upload', category: 'Form', ready: true, showcase: SeneuFileUploadShowcase },
+      { id: 'SeneuSearchBar',  name: 'Search Bar',  category: 'Form', ready: true, showcase: SeneuSearchBarShowcase },
     ],
   },
   {

@@ -47,8 +47,8 @@ export { default as SeneuSkeleton } from './components/display/SeneuSkeleton.vue
 // export { default as SeneuToast } from './components/feedback/SeneuToast.vue'
 // export { default as SeneuModal } from './components/feedback/SeneuModal.vue'
 // export { default as SeneuDrawer } from './components/feedback/SeneuDrawer.vue'
-// export { default as SeneuProgressBar } from './components/feedback/SeneuProgressBar.vue'
-// export { default as SeneuSpinner } from './components/feedback/SeneuSpinner.vue'
+export { default as SeneuProgressBar } from './components/feedback/SeneuProgressBar.vue'
+export { default as SeneuSpinner } from './components/feedback/SeneuSpinner.vue'
 // export { default as SeneuConfirmDialog } from './components/feedback/SeneuConfirmDialog.vue'
 
 // Token CSS path — documented for consumers

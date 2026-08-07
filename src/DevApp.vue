@@ -287,6 +287,8 @@ import SeneuStatCardShowcase from './dev/SeneuStatCardShowcase.vue'
 import SeneuTooltipShowcase from './dev/SeneuTooltipShowcase.vue'
 import SeneuTableShowcase from './dev/SeneuTableShowcase.vue'
 import SeneuChartWrapperShowcase from './dev/SeneuChartWrapperShowcase.vue'
+import SeneuSpinnerShowcase from './dev/SeneuSpinnerShowcase.vue'
+import SeneuProgressBarShowcase from './dev/SeneuProgressBarShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -363,8 +365,8 @@ const componentCategories = [
       { id: 'SeneuToast',         name: 'Toast',          category: 'Feedback', ready: false },
       { id: 'SeneuModal',         name: 'Modal',          category: 'Feedback', ready: false },
       { id: 'SeneuDrawer',        name: 'Drawer',         category: 'Feedback', ready: false },
-      { id: 'SeneuProgressBar',   name: 'Progress Bar',   category: 'Feedback', ready: false },
-      { id: 'SeneuSpinner',       name: 'Spinner',        category: 'Feedback', ready: false },
+      { id: 'SeneuProgressBar',   name: 'Progress Bar',   category: 'Feedback', ready: true, showcase: SeneuProgressBarShowcase },
+      { id: 'SeneuSpinner',       name: 'Spinner',        category: 'Feedback', ready: true, showcase: SeneuSpinnerShowcase },
       { id: 'SeneuConfirmDialog', name: 'Confirm Dialog', category: 'Feedback', ready: false },
     ],
   },

@@ -277,6 +277,9 @@ import SeneuStepperShowcase from './dev/SeneuStepperShowcase.vue'
 import SeneuFooterShowcase from './dev/SeneuFooterShowcase.vue'
 import SeneuCarouselShowcase from './dev/SeneuCarouselShowcase.vue'
 import SeneuRichTextEditorShowcase from './dev/SeneuRichTextEditorShowcase.vue'
+import SeneuCardShowcase from './dev/SeneuCardShowcase.vue'
+import SeneuBadgeShowcase from './dev/SeneuBadgeShowcase.vue'
+import SeneuTagShowcase from './dev/SeneuTagShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -334,10 +337,10 @@ const componentCategories = [
   {
     label: 'Data Display',
     items: [
-      { id: 'SeneuCard',         name: 'Card',          category: 'Display', ready: false },
+      { id: 'SeneuCard',         name: 'Card',          category: 'Display', ready: true, showcase: SeneuCardShowcase },
       { id: 'SeneuTable',        name: 'Table',         category: 'Display', ready: false },
-      { id: 'SeneuBadge',        name: 'Badge',         category: 'Display', ready: false },
-      { id: 'SeneuTag',          name: 'Tag',           category: 'Display', ready: false },
+      { id: 'SeneuBadge',        name: 'Badge',         category: 'Display', ready: true, showcase: SeneuBadgeShowcase },
+      { id: 'SeneuTag',          name: 'Tag',           category: 'Display', ready: true, showcase: SeneuTagShowcase },
       { id: 'SeneuTooltip',      name: 'Tooltip',       category: 'Display', ready: false },
       { id: 'SeneuAvatar',       name: 'Avatar',        category: 'Display', ready: false },
       { id: 'SeneuStatCard',     name: 'Stat Card',     category: 'Display', ready: false },

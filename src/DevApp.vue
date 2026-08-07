@@ -268,6 +268,7 @@ import SeneuToggleShowcase   from './dev/SeneuToggleShowcase.vue'
 import SeneuDatePickerShowcase from './dev/SeneuDatePickerShowcase.vue'
 import SeneuFileUploadShowcase from './dev/SeneuFileUploadShowcase.vue'
 import SeneuSearchBarShowcase from './dev/SeneuSearchBarShowcase.vue'
+import SeneuSidebarShowcase  from './dev/SeneuSidebarShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -311,7 +312,7 @@ const componentCategories = [
   {
     label: 'Layout & Navigation',
     items: [
-      { id: 'SeneuSidebar',         name: 'Sidebar',          category: 'Layout', ready: false },
+      { id: 'SeneuSidebar',         name: 'Sidebar',          category: 'Layout', ready: true, showcase: SeneuSidebarShowcase },
       { id: 'SeneuTopbar',          name: 'Topbar',           category: 'Layout', ready: false },
       { id: 'SeneuBreadcrumb',      name: 'Breadcrumb',       category: 'Layout', ready: false },
       { id: 'SeneuTabs',            name: 'Tabs',             category: 'Layout', ready: false },

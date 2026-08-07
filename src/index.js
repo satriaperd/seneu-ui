@@ -20,7 +20,7 @@ export { default as SeneuFileUpload }  from './components/form/SeneuFileUpload.v
 export { default as SeneuSearchBar }   from './components/form/SeneuSearchBar.vue'
 
 // === Layout & Navigation ===
-// export { default as SeneuSidebar } from './components/layout/SeneuSidebar.vue'
+export { default as SeneuSidebar } from './components/layout/SeneuSidebar.vue'
 // export { default as SeneuTopbar } from './components/layout/SeneuTopbar.vue'
 // export { default as SeneuBreadcrumb } from './components/layout/SeneuBreadcrumb.vue'
 // export { default as SeneuTabs } from './components/layout/SeneuTabs.vue'

@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.21.4] - 2026-08-09
+
+### Added
+- `LICENSE` file (MIT, Cimang Club) — `package.json` declared `"license": "MIT"` but the actual license text never shipped with the package
+
 ## [1.21.3] - 2026-08-09
 
 ### Added
@@ -166,7 +171,8 @@ This release completes every component and cross-cutting concern in the CLAUDE.m
 - `SeneuIcon` (Material Symbols Rounded)
 - Vite library-mode build (ESM + UMD) with TypeScript declaration generation
 
-[1.21.3]: https://github.com/satriaperd/seneu-ui/compare/8f8e4f4...HEAD
+[1.21.4]: https://github.com/satriaperd/seneu-ui/compare/34713a5...HEAD
+[1.21.3]: https://github.com/satriaperd/seneu-ui/compare/8f8e4f4...34713a5
 [1.21.2]: https://github.com/satriaperd/seneu-ui/compare/9c13e8b...8f8e4f4
 [1.21.1]: https://github.com/satriaperd/seneu-ui/compare/f7506d9...aa23799
 [1.21.0]: https://github.com/satriaperd/seneu-ui/compare/193b960...9c13e8b

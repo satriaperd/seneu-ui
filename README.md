@@ -63,6 +63,57 @@ Every component references the semantic tokens `--font-sans` and `--font-mono` (
 
 **Performance note:** because fonts are loaded via the Google Fonts CDN, there's one extra network request on first page load. If your project needs full control over font loading (self-hosting, preloading, subsetting), override `--font-sans`/`--font-mono` as shown above — Seneu UI's CDN import will still run in the background but components will no longer use it.
 
+## Using a Custom Icon Set
+
+Material Symbols is the *default* icon set, not a hard requirement. Every component that renders an icon — `SeneuButton`, `SeneuInput`, `SeneuAlert`, `SeneuToast`, all of them — does so through a single internal component, `SeneuIcon`. That means you can swap the entire library's icon set in one place, without touching any component.
+
+Provide a component at the `SENEU_ICON_KEY` injection key from your app root:
+
+```js
+// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import { SENEU_ICON_KEY } from 'seneu-ui'
+import MyIconAdapter from './MyIconAdapter.vue'
+
+const app = createApp(App)
+app.provide(SENEU_ICON_KEY, MyIconAdapter)
+app.mount('#app')
+```
+
+Your adapter component receives the same props `SeneuIcon` does — `name`, `size`, `fill`, `weight`, `grade`, `label` — and renders whatever you want. `name` is Seneu UI's internal Material-Symbols-based icon name (e.g. `"close"`, `"search"`, `"chevron_left"`), so map it to your icon set's equivalent:
+
+```vue
+<!-- MyIconAdapter.vue — example using lucide-vue-next -->
+<script setup>
+import * as icons from 'lucide-vue-next'
+
+const props = defineProps(['name', 'size', 'label'])
+
+// Map Seneu UI's Material-Symbols-style names to your icon set
+const ICON_MAP = {
+  close: icons.X,
+  search: icons.Search,
+  chevron_left: icons.ChevronLeft,
+  chevron_right: icons.ChevronRight,
+  check: icons.Check,
+  error: icons.AlertCircle,
+  // ...add mappings for every icon name your app actually uses
+}
+</script>
+
+<template>
+  <component
+    :is="ICON_MAP[name] || icons.HelpCircle"
+    :size="size"
+    :aria-label="label || undefined"
+    :aria-hidden="label ? undefined : 'true'"
+  />
+</template>
+```
+
+If you don't provide `SENEU_ICON_KEY`, nothing changes — components fall back to rendering Material Symbols Rounded, as documented above.
+
 ## Design Tokens
 
 Seneu UI uses a two-layer token system:
@@ -101,15 +152,26 @@ const { theme, toggleTheme } = useTheme()
 
 ## Components
 
-| Component | Status |
-|---|---|
-| `SeneuButton` | ✅ |
-| `SeneuInput` | ✅ |
-| `SeneuTextarea` | ✅ |
-| `SeneuSelect` | ✅ |
-| `SeneuIcon` | ✅ |
+All components below are built, tested, and WCAG 2.2 AA verified in both light and dark theme.
 
-Other components (Sidebar, Table, Modal, etc.) are still in development — see [CLAUDE.md](CLAUDE.md) for the full roadmap.
+**Foundation**
+`SeneuIcon` · `useTheme` · `useToast` · `useConfirmDialog`
+
+**Form & Input**
+`SeneuButton` · `SeneuInput` · `SeneuTextarea` · `SeneuSelect` · `SeneuCheckbox` · `SeneuRadio` · `SeneuToggle` · `SeneuDatePicker` · `SeneuFileUpload` · `SeneuSearchBar`
+
+**Layout & Navigation**
+`SeneuSidebar` · `SeneuTopbar` · `SeneuBreadcrumb` · `SeneuTabs` · `SeneuPagination` · `SeneuStepper` · `SeneuFooter` · `SeneuCarousel` · `SeneuRichTextEditor`
+
+**Data Display**
+`SeneuCard` · `SeneuTable` · `SeneuBadge` · `SeneuTag` · `SeneuTooltip` · `SeneuAvatar` · `SeneuStatCard` · `SeneuChartWrapper` · `SeneuEmptyState` · `SeneuSkeleton`
+
+**Feedback & Overlay**
+`SeneuAlert` · `SeneuToast` · `SeneuModal` · `SeneuDrawer` · `SeneuProgressBar` · `SeneuSpinner` · `SeneuConfirmDialog`
+
+`SeneuRichTextEditor` is built on native `contenteditable` + `execCommand` — no Tiptap or other editor dependency needed.
+
+`SeneuChartWrapper` uses ECharts as an optional peer dependency (see [Install](#install)).
 
 ## License
 

@@ -1,6 +1,8 @@
 import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
+import { h } from 'vue'
 import SeneuIcon from '../components/display/SeneuIcon.vue'
+import { SENEU_ICON_KEY } from '../composables/useIcon.js'
 
 describe('SeneuIcon — rendering', () => {
   it('renders a <span> with the icon name as text content', () => {
@@ -71,5 +73,37 @@ describe('SeneuIcon — accessibility', () => {
     const wrapper = mount(SeneuIcon, { props: { name: 'home', label: '' } })
     expect(wrapper.attributes('aria-hidden')).toBe('true')
     expect(wrapper.attributes('role')).toBeUndefined()
+  })
+})
+
+describe('SeneuIcon — custom icon set (SENEU_ICON_KEY)', () => {
+  const CustomIcon = {
+    props: ['name', 'size', 'fill', 'weight', 'grade', 'label'],
+    render() { return h('i', { class: `custom-icon custom-icon--${this.name}` }) },
+  }
+
+  it('renders the default Material Symbols span when nothing is provided', () => {
+    const wrapper = mount(SeneuIcon, { props: { name: 'home' } })
+    expect(wrapper.element.tagName).toBe('SPAN')
+  })
+
+  it('renders the injected custom component instead of the span when SENEU_ICON_KEY is provided', () => {
+    const wrapper = mount(SeneuIcon, {
+      props: { name: 'home', size: 24 },
+      global: { provide: { [SENEU_ICON_KEY]: CustomIcon } },
+    })
+    expect(wrapper.find('span.seneu-icon').exists()).toBe(false)
+    expect(wrapper.find('i.custom-icon--home').exists()).toBe(true)
+  })
+
+  it('forwards all icon props to the custom component', () => {
+    const wrapper = mount(SeneuIcon, {
+      props: { name: 'close', size: 32, fill: true, weight: 500, grade: 100, label: 'Close' },
+      global: { provide: { [SENEU_ICON_KEY]: CustomIcon } },
+    })
+    const custom = wrapper.getComponent(CustomIcon)
+    expect(custom.props()).toMatchObject({
+      name: 'close', size: 32, fill: true, weight: 500, grade: 100, label: 'Close',
+    })
   })
 })

@@ -7,6 +7,7 @@ import './main.css'
 export { useTheme } from './composables/useTheme.js'
 export { useConfirmDialog } from './composables/useConfirmDialog.js'
 export { useToast } from './composables/useToast.js'
+export { SENEU_ICON_KEY } from './composables/useIcon.js'
 export { default as SeneuIcon } from './components/display/SeneuIcon.vue'
 
 // === Form & Input ===

@@ -51,7 +51,7 @@ const props = defineProps({
   },
 })
 
-defineEmits(['click'])
+const emit = defineEmits(['click'])
 
 const iconSize = computed(() => ({ sm: 16, base: 20, lg: 24 }[props.size]))
 </script>
@@ -64,6 +64,7 @@ const iconSize = computed(() => ({ sm: 16, base: 20, lg: 24 }[props.size]))
     :aria-label="iconOnly && loading ? 'Loading' : undefined"
     class="seneu-btn"
     :class="[`seneu-btn--${variant}`, `seneu-btn--${size}`, { 'seneu-btn--loading': loading, 'seneu-btn--icon-only': iconOnly }]"
+    @click="e => emit('click', e)"
   >
     <SeneuIcon
       v-if="loading"

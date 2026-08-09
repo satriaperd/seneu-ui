@@ -21,6 +21,8 @@ export default [
         Node: 'readonly',
         getComputedStyle: 'readonly',
         ResizeObserver: 'readonly',
+        KeyboardEvent: 'readonly',
+        Event: 'readonly',
       },
     },
     rules: {

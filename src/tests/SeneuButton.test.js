@@ -24,6 +24,27 @@ describe('SeneuButton — rendering', () => {
   })
 })
 
+describe('SeneuButton — events', () => {
+  it('emits click when clicked', async () => {
+    const wrapper = mount(SeneuButton, { slots: { default: 'x' } })
+    await wrapper.trigger('click')
+    expect(wrapper.emitted('click')).toBeTruthy()
+    expect(wrapper.emitted('click')).toHaveLength(1)
+  })
+
+  it('passes the native event through the click emit', async () => {
+    const wrapper = mount(SeneuButton, { slots: { default: 'x' } })
+    await wrapper.trigger('click')
+    expect(wrapper.emitted('click')[0][0]).toBeInstanceOf(Event)
+  })
+
+  it('does not fire a click on a disabled button', async () => {
+    const wrapper = mount(SeneuButton, { props: { disabled: true }, slots: { default: 'x' } })
+    await wrapper.trigger('click')
+    expect(wrapper.emitted('click')).toBeFalsy()
+  })
+})
+
 describe('SeneuButton — variants', () => {
   const variants = ['default', 'brand', 'danger', 'success', 'warning', 'info']
 

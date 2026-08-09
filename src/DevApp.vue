@@ -292,6 +292,7 @@ import SeneuProgressBarShowcase from './dev/SeneuProgressBarShowcase.vue'
 import SeneuAlertShowcase from './dev/SeneuAlertShowcase.vue'
 import SeneuModalShowcase from './dev/SeneuModalShowcase.vue'
 import SeneuDrawerShowcase from './dev/SeneuDrawerShowcase.vue'
+import SeneuToastShowcase from './dev/SeneuToastShowcase.vue'
 import SeneuConfirmDialogShowcase from './dev/SeneuConfirmDialogShowcase.vue'
 
 const version = '1.0.0'
@@ -366,7 +367,7 @@ const componentCategories = [
     label: 'Feedback & Overlay',
     items: [
       { id: 'SeneuAlert',         name: 'Alert',          category: 'Feedback', ready: true, showcase: SeneuAlertShowcase },
-      { id: 'SeneuToast',         name: 'Toast',          category: 'Feedback', ready: false },
+      { id: 'SeneuToast',         name: 'Toast',          category: 'Feedback', ready: true, showcase: SeneuToastShowcase },
       { id: 'SeneuModal',         name: 'Modal',          category: 'Feedback', ready: true, showcase: SeneuModalShowcase },
       { id: 'SeneuDrawer',        name: 'Drawer',         category: 'Feedback', ready: true, showcase: SeneuDrawerShowcase },
       { id: 'SeneuProgressBar',   name: 'Progress Bar',   category: 'Feedback', ready: true, showcase: SeneuProgressBarShowcase },

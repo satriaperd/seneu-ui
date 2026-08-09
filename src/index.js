@@ -6,6 +6,7 @@ import './main.css'
 // === Foundation ===
 export { useTheme } from './composables/useTheme.js'
 export { useConfirmDialog } from './composables/useConfirmDialog.js'
+export { useToast } from './composables/useToast.js'
 export { default as SeneuIcon } from './components/display/SeneuIcon.vue'
 
 // === Form & Input ===
@@ -45,7 +46,7 @@ export { default as SeneuSkeleton } from './components/display/SeneuSkeleton.vue
 
 // === Feedback & Overlay ===
 export { default as SeneuAlert } from './components/feedback/SeneuAlert.vue'
-// export { default as SeneuToast } from './components/feedback/SeneuToast.vue'
+export { default as SeneuToast } from './components/feedback/SeneuToast.vue'
 export { default as SeneuModal } from './components/feedback/SeneuModal.vue'
 export { default as SeneuDrawer } from './components/feedback/SeneuDrawer.vue'
 export { default as SeneuProgressBar } from './components/feedback/SeneuProgressBar.vue'

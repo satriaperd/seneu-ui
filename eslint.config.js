@@ -23,6 +23,7 @@ export default [
         ResizeObserver: 'readonly',
         KeyboardEvent: 'readonly',
         Event: 'readonly',
+        MouseEvent: 'readonly',
       },
     },
     rules: {

@@ -32,7 +32,7 @@ export default defineConfig({
           echarts: 'echarts',
         },
         assetFileNames: (assetInfo) => {
-          if (assetInfo.name?.endsWith('.css')) return 'tokens.css'
+          if (assetInfo.name?.endsWith('.css')) return 'style.css'
           return assetInfo.name
         },
       },

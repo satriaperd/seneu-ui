@@ -55,4 +55,4 @@ export { default as SeneuSpinner } from './components/feedback/SeneuSpinner.vue'
 export { default as SeneuConfirmDialog } from './components/feedback/SeneuConfirmDialog.vue'
 
 // Token CSS path — documented for consumers
-export const tokens = 'seneu-ui/dist/style.css'
+export const tokens = '@cimang/seneu-ui/dist/style.css'

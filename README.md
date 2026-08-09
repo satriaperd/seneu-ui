@@ -7,7 +7,7 @@ A Vue 3 component library for building CMS and admin panels — pairs with Tailw
 ## Install
 
 ```bash
-npm install seneu-ui
+npm install @cimang/seneu-ui
 ```
 
 Vue 3.5+ is required as a peer dependency. ECharts is optional and only needed if you use `SeneuChartWrapper`.
@@ -22,14 +22,14 @@ npm install echarts   # optional, only needed for chart components
 // main.js
 import { createApp } from 'vue'
 import App from './App.vue'
-import 'seneu-ui/dist/style.css'
+import '@cimang/seneu-ui/dist/style.css'
 
 createApp(App).mount('#app')
 ```
 
 ```vue
 <script setup>
-import { SeneuButton, SeneuInput } from 'seneu-ui'
+import { SeneuButton, SeneuInput } from '@cimang/seneu-ui'
 </script>
 
 <template>
@@ -38,13 +38,13 @@ import { SeneuButton, SeneuInput } from 'seneu-ui'
 </template>
 ```
 
-`seneu-ui/dist/style.css` already includes everything components need to render correctly: design tokens (primitive + semantic), a base reset, and fonts. No extra setup required.
+`@cimang/seneu-ui/dist/style.css` already includes everything components need to render correctly: design tokens (primitive + semantic), a base reset, and fonts. No extra setup required.
 
 ## Typography & Font
 
 Seneu UI uses **Inter** for general text and **JetBrains Mono** for code (`<code>`, `<pre>`, `<kbd>`, `<samp>`), plus **Material Symbols Rounded** for `SeneuIcon`.
 
-These fonts are **loaded automatically** as soon as you import `seneu-ui/dist/style.css` — it contains an `@import` pointing to the Google Fonts CDN, so there's no need to add a `<link>` tag or install fonts yourself. Zero-config.
+These fonts are **loaded automatically** as soon as you import `@cimang/seneu-ui/dist/style.css` — it contains an `@import` pointing to the Google Fonts CDN, so there's no need to add a `<link>` tag or install fonts yourself. Zero-config.
 
 ```css
 /* already included inside dist/style.css — no need to add this manually */
@@ -55,7 +55,7 @@ These fonts are **loaded automatically** as soon as you import `seneu-ui/dist/st
 Every component references the semantic tokens `--font-sans` and `--font-mono` (see [Design Tokens](#design-tokens)), so if your project already has its own font strategy (e.g. a self-hosted font or a different brand font), you can override the tokens without touching any component:
 
 ```css
-/* in your project's CSS, after importing seneu-ui/dist/style.css */
+/* in your project's CSS, after importing @cimang/seneu-ui/dist/style.css */
 :root {
   --font-sans: 'Your Custom Font', sans-serif;
 }
@@ -73,7 +73,7 @@ Provide a component at the `SENEU_ICON_KEY` injection key from your app root:
 // main.js
 import { createApp } from 'vue'
 import App from './App.vue'
-import { SENEU_ICON_KEY } from 'seneu-ui'
+import { SENEU_ICON_KEY } from '@cimang/seneu-ui'
 import MyIconAdapter from './MyIconAdapter.vue'
 
 const app = createApp(App)
@@ -122,14 +122,14 @@ Seneu UI uses a two-layer token system:
 - **Semantic** (`--color-*`, `--space-*`, `--font-*`, etc.) — contextual tokens used by components and safe for you to override.
 
 ```js
-import 'seneu-ui/dist/style.css' // tokens + base + fonts, all-in-one
+import '@cimang/seneu-ui/dist/style.css' // tokens + base + fonts, all-in-one
 ```
 
 Need just the token CSS without the base reset? Import the token files separately:
 
 ```js
-import 'seneu-ui/src/tokens/primitive.css'
-import 'seneu-ui/src/tokens/semantic.css'
+import '@cimang/seneu-ui/src/tokens/primitive.css'
+import '@cimang/seneu-ui/src/tokens/semantic.css'
 ```
 
 ## Dark & Light Theme
@@ -138,7 +138,7 @@ The default theme follows the device's `prefers-color-scheme`. For manual toggli
 
 ```vue
 <script setup>
-import { useTheme } from 'seneu-ui'
+import { useTheme } from '@cimang/seneu-ui'
 
 const { theme, toggleTheme } = useTheme()
 </script>

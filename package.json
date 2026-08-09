@@ -1,8 +1,11 @@
 {
-  "name": "seneu-ui",
-  "version": "1.21.1",
+  "name": "@cimang/seneu-ui",
+  "version": "1.21.2",
   "description": "Vue 3 component library for CMS and admin panel — by Cimang Club",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/seneu-ui.umd.cjs",
   "module": "./dist/seneu-ui.js",
   "exports": {
@@ -67,6 +70,6 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/satriaperd/seneu-cms"
+    "url": "git+https://github.com/satriaperd/seneu-ui.git"
   }
 }

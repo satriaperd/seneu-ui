@@ -13,7 +13,7 @@
  *
  * @example
  * import { createApp } from 'vue'
- * import { SENEU_ICON_KEY } from 'seneu-ui'
+ * import { SENEU_ICON_KEY } from '@cimang/seneu-ui'
  * import MyIconAdapter from './MyIconAdapter.vue'
  *
  * const app = createApp(App)

@@ -5,6 +5,7 @@ import './main.css'
 
 // === Foundation ===
 export { useTheme } from './composables/useTheme.js'
+export { useConfirmDialog } from './composables/useConfirmDialog.js'
 export { default as SeneuIcon } from './components/display/SeneuIcon.vue'
 
 // === Form & Input ===
@@ -46,10 +47,10 @@ export { default as SeneuSkeleton } from './components/display/SeneuSkeleton.vue
 export { default as SeneuAlert } from './components/feedback/SeneuAlert.vue'
 // export { default as SeneuToast } from './components/feedback/SeneuToast.vue'
 export { default as SeneuModal } from './components/feedback/SeneuModal.vue'
-// export { default as SeneuDrawer } from './components/feedback/SeneuDrawer.vue'
+export { default as SeneuDrawer } from './components/feedback/SeneuDrawer.vue'
 export { default as SeneuProgressBar } from './components/feedback/SeneuProgressBar.vue'
 export { default as SeneuSpinner } from './components/feedback/SeneuSpinner.vue'
-// export { default as SeneuConfirmDialog } from './components/feedback/SeneuConfirmDialog.vue'
+export { default as SeneuConfirmDialog } from './components/feedback/SeneuConfirmDialog.vue'
 
 // Token CSS path — documented for consumers
 export const tokens = 'seneu-ui/dist/style.css'

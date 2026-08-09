@@ -291,6 +291,8 @@ import SeneuSpinnerShowcase from './dev/SeneuSpinnerShowcase.vue'
 import SeneuProgressBarShowcase from './dev/SeneuProgressBarShowcase.vue'
 import SeneuAlertShowcase from './dev/SeneuAlertShowcase.vue'
 import SeneuModalShowcase from './dev/SeneuModalShowcase.vue'
+import SeneuDrawerShowcase from './dev/SeneuDrawerShowcase.vue'
+import SeneuConfirmDialogShowcase from './dev/SeneuConfirmDialogShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -366,10 +368,10 @@ const componentCategories = [
       { id: 'SeneuAlert',         name: 'Alert',          category: 'Feedback', ready: true, showcase: SeneuAlertShowcase },
       { id: 'SeneuToast',         name: 'Toast',          category: 'Feedback', ready: false },
       { id: 'SeneuModal',         name: 'Modal',          category: 'Feedback', ready: true, showcase: SeneuModalShowcase },
-      { id: 'SeneuDrawer',        name: 'Drawer',         category: 'Feedback', ready: false },
+      { id: 'SeneuDrawer',        name: 'Drawer',         category: 'Feedback', ready: true, showcase: SeneuDrawerShowcase },
       { id: 'SeneuProgressBar',   name: 'Progress Bar',   category: 'Feedback', ready: true, showcase: SeneuProgressBarShowcase },
       { id: 'SeneuSpinner',       name: 'Spinner',        category: 'Feedback', ready: true, showcase: SeneuSpinnerShowcase },
-      { id: 'SeneuConfirmDialog', name: 'Confirm Dialog', category: 'Feedback', ready: false },
+      { id: 'SeneuConfirmDialog', name: 'Confirm Dialog', category: 'Feedback', ready: true, showcase: SeneuConfirmDialogShowcase },
     ],
   },
 ]

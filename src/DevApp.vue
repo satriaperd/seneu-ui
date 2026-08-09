@@ -289,6 +289,8 @@ import SeneuTableShowcase from './dev/SeneuTableShowcase.vue'
 import SeneuChartWrapperShowcase from './dev/SeneuChartWrapperShowcase.vue'
 import SeneuSpinnerShowcase from './dev/SeneuSpinnerShowcase.vue'
 import SeneuProgressBarShowcase from './dev/SeneuProgressBarShowcase.vue'
+import SeneuAlertShowcase from './dev/SeneuAlertShowcase.vue'
+import SeneuModalShowcase from './dev/SeneuModalShowcase.vue'
 
 const version = '1.0.0'
 const { isDark, toggle: toggleTheme, setTheme } = useTheme()
@@ -361,9 +363,9 @@ const componentCategories = [
   {
     label: 'Feedback & Overlay',
     items: [
-      { id: 'SeneuAlert',         name: 'Alert',          category: 'Feedback', ready: false },
+      { id: 'SeneuAlert',         name: 'Alert',          category: 'Feedback', ready: true, showcase: SeneuAlertShowcase },
       { id: 'SeneuToast',         name: 'Toast',          category: 'Feedback', ready: false },
-      { id: 'SeneuModal',         name: 'Modal',          category: 'Feedback', ready: false },
+      { id: 'SeneuModal',         name: 'Modal',          category: 'Feedback', ready: true, showcase: SeneuModalShowcase },
       { id: 'SeneuDrawer',        name: 'Drawer',         category: 'Feedback', ready: false },
       { id: 'SeneuProgressBar',   name: 'Progress Bar',   category: 'Feedback', ready: true, showcase: SeneuProgressBarShowcase },
       { id: 'SeneuSpinner',       name: 'Spinner',        category: 'Feedback', ready: true, showcase: SeneuSpinnerShowcase },

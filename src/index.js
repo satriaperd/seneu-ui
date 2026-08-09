@@ -43,9 +43,9 @@ export { default as SeneuEmptyState } from './components/display/SeneuEmptyState
 export { default as SeneuSkeleton } from './components/display/SeneuSkeleton.vue'
 
 // === Feedback & Overlay ===
-// export { default as SeneuAlert } from './components/feedback/SeneuAlert.vue'
+export { default as SeneuAlert } from './components/feedback/SeneuAlert.vue'
 // export { default as SeneuToast } from './components/feedback/SeneuToast.vue'
-// export { default as SeneuModal } from './components/feedback/SeneuModal.vue'
+export { default as SeneuModal } from './components/feedback/SeneuModal.vue'
 // export { default as SeneuDrawer } from './components/feedback/SeneuDrawer.vue'
 export { default as SeneuProgressBar } from './components/feedback/SeneuProgressBar.vue'
 export { default as SeneuSpinner } from './components/feedback/SeneuSpinner.vue'

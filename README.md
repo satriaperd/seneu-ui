@@ -136,9 +136,11 @@ import '@cimang/seneu-ui/src/tokens/semantic.css'
 
 Seneu UI ships zero framework CSS — no bundled Tailwind, no bundled Bootstrap. Components are styled with plain CSS custom properties and a minimal reset, so you can drop this into a project using Tailwind, Bootstrap, UnoCSS, or nothing at all, without either side fighting the other for spacing/margins.
 
-The minimal reset (`* { margin: 0; padding: 0 }`, heading weights, focus rings, etc.) lives inside a named CSS layer, `@layer seneu-base`. Per the [CSS Cascade Layers spec](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), any CSS your app writes outside of a layer — plain custom CSS, Bootstrap, most non-utility frameworks — automatically wins over `seneu-base`, regardless of selector specificity. If your framework also uses layers (Tailwind, UnoCSS), its utilities still win as long as its CSS is loaded after `@cimang/seneu-ui/dist/style.css`, which is already the case in the standard install order shown above.
+The minimal reset (`* { margin: 0; padding: 0 }`, heading weights, focus rings, etc.) lives inside `@layer base`. Per the [CSS Cascade Layers spec](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), any CSS your app writes outside of a layer — plain custom CSS, Bootstrap, most non-utility frameworks — automatically wins over anything in a layer, regardless of selector specificity.
 
-In practice: you never need `!important` or extra specificity tricks to override Seneu UI's base styles — your app's own spacing/margin utilities just work.
+If your framework uses layers itself (Tailwind, UnoCSS), `base` is reused deliberately rather than a private name like `seneu-ui-base`: Tailwind already declares `@layer theme, base, components, utilities;` and puts its own element defaults in `base` specifically so `utilities` always outranks it. Reusing that exact name means Seneu UI's reset merges into the same layer position — below `utilities` — regardless of whether your app's CSS loads before or after this library's stylesheet. A private layer name doesn't have that guarantee: its position is decided by whichever file mentions it first, which makes the outcome depend on load order instead of being predictable.
+
+In practice: you never need `!important` or extra specificity tricks to override Seneu UI's base styles — your app's own spacing/margin utilities just work, regardless of import order.
 
 ## Dark & Light Theme
 

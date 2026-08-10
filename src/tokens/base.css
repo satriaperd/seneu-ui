@@ -3,18 +3,36 @@
    Minimal reset + typography defaults + global focus indicator.
    Imported after primitive.css and semantic.css.
 
-   Wrapped in a named layer (not @tailwind base / not unlayered)
-   so any host app's own CSS beats it automatically. Per the CSS
-   Cascade Layers spec, unlayered rules always win over layered
-   ones regardless of specificity or source order — so a host app
-   using plain CSS, Bootstrap, or an unlayered override always
-   overrides this layer with zero extra specificity/!important.
-   Frameworks that use layers themselves (Tailwind, UnoCSS) still
-   compose correctly as long as their CSS loads after this file,
-   since later-declared layers outrank earlier-declared ones.
+   Wrapped in @layer base — not unlayered, and not a private name
+   like @layer seneu-base. Two separate guarantees depend on this:
+
+   1. Unlayered rules always win over ANY layered rule, regardless
+      of specificity or source order (CSS Cascade Layers spec). So
+      a host app using plain CSS, Bootstrap, or any unlayered
+      override always beats this layer with zero extra specificity
+      or !important, no matter the load order.
+
+   2. A *private* layer name (@layer seneu-base) gets its final
+      cascade position from wherever it's first mentioned across
+      the whole page. If a host app's own CSS (e.g. Tailwind's
+      "@layer theme, base, components, utilities;") loads BEFORE
+      this stylesheet, "seneu-base" is a name nobody's seen yet, so
+      it gets appended at the END of the layer order — outranking
+      "utilities" and defeating the whole point. Naming it "base"
+      instead reuses the exact layer name Tailwind (and by
+      convention several other CSS frameworks) already declares for
+      this purpose: element-default styles that utilities are
+      always meant to override. Multiple stylesheets contributing
+      to the same named layer merge into one bucket at one fixed
+      position — reusing "base" ties our reset to that same
+      well-known position instead of leaving it load-order
+      dependent. Verified in a real browser both ways: host CSS
+      loaded before this file, and this file loaded before host CSS
+      (the order this library's own README recommends) — utilities
+      win in both cases.
    ============================================================ */
 
-@layer seneu-base {
+@layer base {
   /* --- Minimal reset --- */
   *, *::before, *::after {
     box-sizing: border-box;

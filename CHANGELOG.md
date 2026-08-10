@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.21.6] - 2026-08-10
+
+### Fixed
+- **`@layer base`, not `@layer seneu-base`.** v1.21.5 wrapped the reset in a layer so host CSS would win, but used a private layer name — and a private name's cascade position is decided by whichever stylesheet mentions it *first* across the whole page. In apps that declare their own layers (e.g. Tailwind's `@layer theme, base, components, utilities;`) before loading this library's CSS, `seneu-base` was a name nobody had seen yet, so it got appended at the very end of the layer order — outranking `utilities` and defeating the fix entirely, confirmed by a real-world report against a Tailwind-based consumer app (gap: 0px where `space-y-*` should have applied). Renamed to `@layer base`, the same name Tailwind itself uses for exactly this purpose (element defaults that `utilities` always overrides) — reusing that name merges Seneu UI's reset into the same fixed layer position regardless of load order. Verified in a real browser in both directions: host CSS loaded before this library's stylesheet, and this library's stylesheet loaded before host CSS (the order this README recommends)
+
 ## [1.21.5] - 2026-08-10
 
 ### Fixed
@@ -177,7 +182,8 @@ This release completes every component and cross-cutting concern in the CLAUDE.m
 - `SeneuIcon` (Material Symbols Rounded)
 - Vite library-mode build (ESM + UMD) with TypeScript declaration generation
 
-[1.21.5]: https://github.com/satriaperd/seneu-ui/compare/592e8b3...HEAD
+[1.21.6]: https://github.com/satriaperd/seneu-ui/compare/3f9049a...HEAD
+[1.21.5]: https://github.com/satriaperd/seneu-ui/compare/592e8b3...3f9049a
 [1.21.4]: https://github.com/satriaperd/seneu-ui/compare/34713a5...592e8b3
 [1.21.3]: https://github.com/satriaperd/seneu-ui/compare/8f8e4f4...34713a5
 [1.21.2]: https://github.com/satriaperd/seneu-ui/compare/9c13e8b...8f8e4f4

@@ -1,6 +1,6 @@
 {
   "name": "@cimang/seneu-ui",
-  "version": "1.21.4",
+  "version": "1.21.5",
   "description": "Vue 3 component library for CMS and admin panel — by Cimang Club",
   "type": "module",
   "publishConfig": {
@@ -8,8 +8,10 @@
   },
   "main": "./dist/seneu-ui.umd.cjs",
   "module": "./dist/seneu-ui.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/seneu-ui.js",
       "require": "./dist/seneu-ui.umd.cjs"
     },

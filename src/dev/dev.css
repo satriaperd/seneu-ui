@@ -1,0 +1,15 @@
+/* Dev playground only — never bundled into the published package.
+   Pulls in the library's own CSS (tokens + base) plus Tailwind,
+   since DevApp.vue and the showcase files use Tailwind utility
+   classes for their own internal layout convenience. Actual
+   library components never depend on Tailwind. */
+@import '../main.css';
+@import 'tailwindcss';
+
+* {
+  font-family: var(--font-sans);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+}

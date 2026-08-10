@@ -132,6 +132,14 @@ import '@cimang/seneu-ui/src/tokens/primitive.css'
 import '@cimang/seneu-ui/src/tokens/semantic.css'
 ```
 
+## Works Alongside Any CSS Framework
+
+Seneu UI ships zero framework CSS — no bundled Tailwind, no bundled Bootstrap. Components are styled with plain CSS custom properties and a minimal reset, so you can drop this into a project using Tailwind, Bootstrap, UnoCSS, or nothing at all, without either side fighting the other for spacing/margins.
+
+The minimal reset (`* { margin: 0; padding: 0 }`, heading weights, focus rings, etc.) lives inside a named CSS layer, `@layer seneu-base`. Per the [CSS Cascade Layers spec](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), any CSS your app writes outside of a layer — plain custom CSS, Bootstrap, most non-utility frameworks — automatically wins over `seneu-base`, regardless of selector specificity. If your framework also uses layers (Tailwind, UnoCSS), its utilities still win as long as its CSS is loaded after `@cimang/seneu-ui/dist/style.css`, which is already the case in the standard install order shown above.
+
+In practice: you never need `!important` or extra specificity tricks to override Seneu UI's base styles — your app's own spacing/margin utilities just work.
+
 ## Dark & Light Theme
 
 The default theme follows the device's `prefers-color-scheme`. For manual toggling, use the `useTheme` composable:

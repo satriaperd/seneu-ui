@@ -5,13 +5,3 @@
 @import './tokens/primitive.css';
 @import './tokens/semantic.css';
 @import './tokens/base.css';
-
-@import 'tailwindcss';
-
-* {
-  font-family: var(--font-sans);
-}
-
-code, pre, kbd, samp {
-  font-family: var(--font-mono);
-}

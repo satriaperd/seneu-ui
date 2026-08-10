@@ -2,99 +2,111 @@
    BASE STYLES
    Minimal reset + typography defaults + global focus indicator.
    Imported after primitive.css and semantic.css.
+
+   Wrapped in a named layer (not @tailwind base / not unlayered)
+   so any host app's own CSS beats it automatically. Per the CSS
+   Cascade Layers spec, unlayered rules always win over layered
+   ones regardless of specificity or source order — so a host app
+   using plain CSS, Bootstrap, or an unlayered override always
+   overrides this layer with zero extra specificity/!important.
+   Frameworks that use layers themselves (Tailwind, UnoCSS) still
+   compose correctly as long as their CSS loads after this file,
+   since later-declared layers outrank earlier-declared ones.
    ============================================================ */
 
-/* --- Minimal reset --- */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer seneu-base {
+  /* --- Minimal reset --- */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+  }
+
+  /* --- Body defaults --- */
+  body {
+    font-family:              var(--font-sans);
+    font-size:                var(--font-size-body);
+    line-height:              var(--line-height-normal);
+    color:                    var(--color-text-default);
+    background-color:         var(--color-surface-default);
+    -webkit-font-smoothing:   antialiased;
+    -moz-osx-font-smoothing:  grayscale;
+  }
+
+  /* --- Headings --- */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight:  var(--font-weight-semibold);
+    line-height:  var(--line-height-tight);
+    color:        var(--color-text-default);
+  }
+
+  /* --- Monospace --- */
+  code, kbd, pre, samp {
+    font-family: var(--font-mono);
+    font-size:   0.9em;
+  }
+
+  /* --- Links --- */
+  a {
+    color:           var(--color-text-brand);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
+
+  /* --- Media --- */
+  img, svg, video, canvas, picture {
+    display:   block;
+    max-width: 100%;
+  }
+
+  /* --- Form elements inherit typography --- */
+  button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size:   100%;
+    font-weight: inherit;
+    line-height: inherit;
+    color:       inherit;
+  }
+
+  button { cursor: pointer; }
+
+  /* --- Global focus indicator (WCAG 2.2 AA) --- */
+  :focus-visible {
+    outline:        2px solid var(--color-border-focus);
+    outline-offset: 2px;
+    border-radius:  var(--radius-subtle);
+  }
+
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* --- Scrollbar (Webkit) --- */
+  ::-webkit-scrollbar              { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track        { background: transparent; }
+  ::-webkit-scrollbar-thumb        { background: var(--color-border-muted); border-radius: var(--radius-pill); }
+  ::-webkit-scrollbar-thumb:hover  { background: var(--color-border-interactive); }
+
+  /* Firefox */
+  * { scrollbar-width: thin; scrollbar-color: var(--color-border-muted) transparent; }
+
+  /* --- Text selection --- */
+  ::selection {
+    background: var(--color-surface-brand-subtle);
+    color:      var(--color-text-brand);
+  }
+
+  /* --- Disabled elements --- */
+  [disabled], [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
+  /* --- List reset (opt-in) --- */
+  [role="list"] { list-style: none; }
+
+  /* --- Hidden --- */
+  [hidden] { display: none !important; }
 }
-
-html {
-  -webkit-text-size-adjust: 100%;
-  tab-size: 4;
-}
-
-/* --- Body defaults --- */
-body {
-  font-family:              var(--font-sans);
-  font-size:                var(--font-size-body);
-  line-height:              var(--line-height-normal);
-  color:                    var(--color-text-default);
-  background-color:         var(--color-surface-default);
-  -webkit-font-smoothing:   antialiased;
-  -moz-osx-font-smoothing:  grayscale;
-}
-
-/* --- Headings --- */
-h1, h2, h3, h4, h5, h6 {
-  font-weight:  var(--font-weight-semibold);
-  line-height:  var(--line-height-tight);
-  color:        var(--color-text-default);
-}
-
-/* --- Monospace --- */
-code, kbd, pre, samp {
-  font-family: var(--font-mono);
-  font-size:   0.9em;
-}
-
-/* --- Links --- */
-a {
-  color:           var(--color-text-brand);
-  text-decoration: none;
-}
-a:hover { text-decoration: underline; }
-
-/* --- Media --- */
-img, svg, video, canvas, picture {
-  display:   block;
-  max-width: 100%;
-}
-
-/* --- Form elements inherit typography --- */
-button, input, optgroup, select, textarea {
-  font-family: inherit;
-  font-size:   100%;
-  font-weight: inherit;
-  line-height: inherit;
-  color:       inherit;
-}
-
-button { cursor: pointer; }
-
-/* --- Global focus indicator (WCAG 2.2 AA) --- */
-:focus-visible {
-  outline:        2px solid var(--color-border-focus);
-  outline-offset: 2px;
-  border-radius:  var(--radius-subtle);
-}
-
-:focus:not(:focus-visible) { outline: none; }
-
-/* --- Scrollbar (Webkit) --- */
-::-webkit-scrollbar              { width: 6px; height: 6px; }
-::-webkit-scrollbar-track        { background: transparent; }
-::-webkit-scrollbar-thumb        { background: var(--color-border-muted); border-radius: var(--radius-pill); }
-::-webkit-scrollbar-thumb:hover  { background: var(--color-border-interactive); }
-
-/* Firefox */
-* { scrollbar-width: thin; scrollbar-color: var(--color-border-muted) transparent; }
-
-/* --- Text selection --- */
-::selection {
-  background: var(--color-surface-brand-subtle);
-  color:      var(--color-text-brand);
-}
-
-/* --- Disabled elements --- */
-[disabled], [aria-disabled="true"] {
-  cursor: not-allowed;
-}
-
-/* --- List reset (opt-in) --- */
-[role="list"] { list-style: none; }
-
-/* --- Hidden --- */
-[hidden] { display: none !important; }

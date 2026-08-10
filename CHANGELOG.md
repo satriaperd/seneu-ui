@@ -4,7 +4,13 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [1.21.4] - 2026-08-09
+## [1.21.5] - 2026-08-10
+
+### Fixed
+- **`dist/style.css` no longer bundles Tailwind's entire engine.** The library's CSS entry (`src/main.css`, imported by `src/index.js`) also `@import`ed `tailwindcss` — needed only for the internal dev playground's own layout, never by actual components — so every published build shipped Tailwind's full Preflight, its `theme`/`base`/`components`/`utilities`/`properties` layers, and JIT-generated utility classes from dev-only files. Split into a dev-only CSS entry (`src/dev/dev.css`) that still pulls in Tailwind for the playground; the shipped entry now contains only design tokens and Seneu UI's own minimal reset
+- **The base reset now composes correctly with host CSS frameworks.** It previously lived as plain unlayered CSS, which — per the CSS Cascade Layers spec — always wins over layered rules regardless of specificity or source order. Tailwind (and other frameworks that wrap their own utilities in `@layer`) lost every spacing/margin utility to Seneu UI's reset no matter how specific the selector was. The reset now lives inside a named layer, `@layer seneu-base`, so any host app's CSS — plain custom CSS, Bootstrap, or a layered framework loaded after this library's stylesheet — wins automatically. Verified in a real browser against both an unlayered override and a Tailwind-style `@layer utilities` override
+
+Also documented this composability guarantee in the README ("Works Alongside Any CSS Framework").
 
 ### Added
 - `LICENSE` file (MIT, Cimang Club) — `package.json` declared `"license": "MIT"` but the actual license text never shipped with the package
@@ -171,7 +177,8 @@ This release completes every component and cross-cutting concern in the CLAUDE.m
 - `SeneuIcon` (Material Symbols Rounded)
 - Vite library-mode build (ESM + UMD) with TypeScript declaration generation
 
-[1.21.4]: https://github.com/satriaperd/seneu-ui/compare/34713a5...HEAD
+[1.21.5]: https://github.com/satriaperd/seneu-ui/compare/592e8b3...HEAD
+[1.21.4]: https://github.com/satriaperd/seneu-ui/compare/34713a5...592e8b3
 [1.21.3]: https://github.com/satriaperd/seneu-ui/compare/8f8e4f4...34713a5
 [1.21.2]: https://github.com/satriaperd/seneu-ui/compare/9c13e8b...8f8e4f4
 [1.21.1]: https://github.com/satriaperd/seneu-ui/compare/f7506d9...aa23799

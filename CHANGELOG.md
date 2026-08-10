@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.21.7] - 2026-08-10
+
+### Changed
+- Tightened `--space-component-gap` (label → field → hint/error spacing inside `SeneuInput`, `SeneuTextarea`, `SeneuSelect`, `SeneuCheckbox`, `SeneuRadio`, `SeneuToggle`, `SeneuDatePicker`, `SeneuFileUpload`, `SeneuSearchBar`, `SeneuRichTextEditor`) from `--primitive-space-3` (12px) to `--primitive-space-1` (4px). 12px read as too loose for a label directly coupled to its own field — closer coupling is the more conventional pattern for admin/CMS form density
+
 ## [1.21.6] - 2026-08-10
 
 ### Fixed
@@ -182,7 +187,8 @@ This release completes every component and cross-cutting concern in the CLAUDE.m
 - `SeneuIcon` (Material Symbols Rounded)
 - Vite library-mode build (ESM + UMD) with TypeScript declaration generation
 
-[1.21.6]: https://github.com/satriaperd/seneu-ui/compare/3f9049a...HEAD
+[1.21.7]: https://github.com/satriaperd/seneu-ui/compare/3b46888...HEAD
+[1.21.6]: https://github.com/satriaperd/seneu-ui/compare/3f9049a...3b46888
 [1.21.5]: https://github.com/satriaperd/seneu-ui/compare/592e8b3...3f9049a
 [1.21.4]: https://github.com/satriaperd/seneu-ui/compare/34713a5...592e8b3
 [1.21.3]: https://github.com/satriaperd/seneu-ui/compare/8f8e4f4...34713a5

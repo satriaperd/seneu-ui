@@ -40,7 +40,7 @@
   /* --------------------------------------------------
      SPACING — semantic
      -------------------------------------------------- */
-  --space-component-gap:            var(--primitive-space-3);
+  --space-component-gap:            var(--primitive-space-1);
   --space-component-padding-inline: var(--primitive-space-4);
   --space-component-padding-block:  var(--primitive-space-2);
   --space-layout-section:           var(--primitive-space-12);

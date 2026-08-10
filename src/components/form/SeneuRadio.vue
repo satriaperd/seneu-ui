@@ -145,8 +145,6 @@ function onChange(e) {
 .seneu-radio--base .seneu-radio__wrap { width: 20px; height: 20px; }
 .seneu-radio--lg   .seneu-radio__wrap { width: 24px; height: 24px; }
 
-.seneu-radio--with-description.seneu-radio--sm   .seneu-radio__wrap { margin-top: 2px; }
-.seneu-radio--with-description.seneu-radio--base .seneu-radio__wrap { margin-top: 1px; }
 
 .seneu-radio__input {
   position: absolute;

@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.22.0] - 2026-08-10
+
+### Added
+- 4 new chart colors — `--color-chart-5` through `--color-chart-8` (violet, gold, sky, magenta) — joining the existing teal/indigo/rose/lime, for a full 8-slot categorical palette. `SeneuChartWrapper`'s default color array now draws from all 8. Designed and validated with the `dataviz` skill's `validate_palette.js`: CVD-adjacent separation ΔE 13.1 (target ≥8), normal-vision floor ΔE 23.3 (target ≥15), both comfortably clear in the append order that preserves the existing `chart-1`..`chart-4` slots (no reordering — a reorder would've silently changed what an existing consumer's `chart-4` reference renders). `chart-5` (gold) joins `chart-4` (lime) in the validator's sub-3:1 contrast WARN band — same as before, pair with a legend or direct labels rather than color alone
+- Full 10-step primitive color scales for Danger/Error (`red-*`), Warning (`amber-*`), Success (`green-*`), and Info (`blue-*`) are now visualized in the dev Token Preview, matching the Brand and Neutral sections. These scales already existed in `primitive.css` — they just weren't surfaced anywhere to look at
+
+### Fixed
+- `SeneuCheckbox` and `SeneuRadio`'s multi-line label+description case simplified to a clean `align-items: flex-start` with no sub-pixel nudge — the previous 1-2px offset (left over from before the center-alignment fix in v1.21.8) made "aligned to top" not quite read as flush
+
 ## [1.21.8] - 2026-08-10
 
 ### Fixed
@@ -192,7 +201,8 @@ This release completes every component and cross-cutting concern in the CLAUDE.m
 - `SeneuIcon` (Material Symbols Rounded)
 - Vite library-mode build (ESM + UMD) with TypeScript declaration generation
 
-[1.21.8]: https://github.com/satriaperd/seneu-ui/compare/806477b...HEAD
+[1.22.0]: https://github.com/satriaperd/seneu-ui/compare/21babfe...HEAD
+[1.21.8]: https://github.com/satriaperd/seneu-ui/compare/806477b...21babfe
 [1.21.7]: https://github.com/satriaperd/seneu-ui/compare/3b46888...806477b
 [1.21.6]: https://github.com/satriaperd/seneu-ui/compare/3f9049a...3b46888
 [1.21.5]: https://github.com/satriaperd/seneu-ui/compare/592e8b3...3f9049a

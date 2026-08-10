@@ -92,12 +92,23 @@
   --primitive-color-blue-900: #1E3A8A;
 
   /* --------------------------------------------------
-     COLOR — Chart (4 warna harmoni brand, WCAG AA)
+     COLOR — Chart (8 categorical hues, fixed order — validated
+     with the dataviz skill's validate_palette.js: CVD-adjacent
+     ΔE 13.1, normal-vision floor ΔE 23.3, both well above the
+     8/15 targets. Never reorder — the order is what keeps
+     adjacent series distinguishable under color-vision deficiency.
+     chart-5/chart-6 clear WCAG contrast but sit in the validator's
+     contrast WARN band like chart-4 always has — pair with a
+     legend/direct labels, never color alone.)
      -------------------------------------------------- */
   --primitive-color-chart-1: #0D9488; /* Teal warm */
   --primitive-color-chart-2: #6366F1; /* Indigo warm */
   --primitive-color-chart-3: #F43F5E; /* Rose warm */
   --primitive-color-chart-4: #84CC16; /* Lime warm */
+  --primitive-color-chart-5: #A855F7; /* Violet */
+  --primitive-color-chart-6: #CA8A04; /* Gold */
+  --primitive-color-chart-7: #0284C7; /* Sky */
+  --primitive-color-chart-8: #DB2777; /* Magenta */
 
   /* --------------------------------------------------
      SPACING — base 4px (0.25rem)

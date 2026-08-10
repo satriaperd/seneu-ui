@@ -70,6 +70,46 @@
           </div>
 
           <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Danger / Error</h2>
+            <div class="dev-color-grid">
+              <div v-for="shade in [50,100,200,300,400,500,600,700,800,900]" :key="shade" class="dev-color-swatch">
+                <div class="dev-color-swatch__block" :style="{ background: `var(--primitive-color-red-${shade})` }" />
+                <span class="dev-color-swatch__label">red-{{ shade }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Warning</h2>
+            <div class="dev-color-grid">
+              <div v-for="shade in [50,100,200,300,400,500,600,700,800,900]" :key="shade" class="dev-color-swatch">
+                <div class="dev-color-swatch__block" :style="{ background: `var(--primitive-color-amber-${shade})` }" />
+                <span class="dev-color-swatch__label">amber-{{ shade }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Success</h2>
+            <div class="dev-color-grid">
+              <div v-for="shade in [50,100,200,300,400,500,600,700,800,900]" :key="shade" class="dev-color-swatch">
+                <div class="dev-color-swatch__block" :style="{ background: `var(--primitive-color-green-${shade})` }" />
+                <span class="dev-color-swatch__label">green-{{ shade }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dev-token-section">
+            <h2 class="dev-token-section__title">Info</h2>
+            <div class="dev-color-grid">
+              <div v-for="shade in [50,100,200,300,400,500,600,700,800,900]" :key="shade" class="dev-color-swatch">
+                <div class="dev-color-swatch__block" :style="{ background: `var(--primitive-color-blue-${shade})` }" />
+                <span class="dev-color-swatch__label">blue-{{ shade }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dev-token-section">
             <h2 class="dev-token-section__title">Semantic Surfaces</h2>
             <div class="dev-color-grid">
               <div v-for="name in ['default','raised','brand','brand-subtle','danger','danger-subtle','warning','warning-subtle','success','success-subtle','info','info-subtle']" :key="name" class="dev-color-swatch">
@@ -82,7 +122,7 @@
           <div class="dev-token-section">
             <h2 class="dev-token-section__title">Chart Colors</h2>
             <div class="dev-color-grid">
-              <div v-for="n in [1,2,3,4]" :key="n" class="dev-color-swatch">
+              <div v-for="n in [1,2,3,4,5,6,7,8]" :key="n" class="dev-color-swatch">
                 <div class="dev-color-swatch__block" :style="{ background: `var(--color-chart-${n})` }" />
                 <span class="dev-color-swatch__label">chart-{{ n }}</span>
               </div>

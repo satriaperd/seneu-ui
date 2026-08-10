@@ -183,11 +183,6 @@ watch(() => props.indeterminate, v => { if (inputRef.value) inputRef.value.indet
 .seneu-checkbox--base .seneu-checkbox__wrap { width: 20px; height: 20px; }
 .seneu-checkbox--lg   .seneu-checkbox__wrap { width: 24px; height: 24px; }
 
-/* With a multi-line description, the box aligns to the top of the
-   first line — these nudge it down to match the label's cap-height
-   instead of the line box's full height */
-.seneu-checkbox--with-description.seneu-checkbox--sm   .seneu-checkbox__wrap { margin-top: 2px; }
-.seneu-checkbox--with-description.seneu-checkbox--base .seneu-checkbox__wrap { margin-top: 1px; }
 
 .seneu-checkbox__input {
   position: absolute;

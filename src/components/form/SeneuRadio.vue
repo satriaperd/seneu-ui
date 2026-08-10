@@ -57,8 +57,9 @@ function onChange(e) {
       :class="[
         `seneu-radio--${size}`,
         {
-          'seneu-radio--error':    !!error,
-          'seneu-radio--disabled': disabled,
+          'seneu-radio--error':            !!error,
+          'seneu-radio--disabled':         disabled,
+          'seneu-radio--with-description': !!description,
         },
       ]"
     >
@@ -116,11 +117,15 @@ function onChange(e) {
 
 .seneu-radio {
   display:     inline-flex;
-  align-items: flex-start;
+  align-items: center;
   gap:         var(--space-inline-tight);
   cursor:      pointer;
   user-select: none;
 }
+
+/* Multi-line label+description: align the dot to the top of the
+   first line instead of centering against the whole text block */
+.seneu-radio--with-description { align-items: flex-start; }
 
 .seneu-radio--disabled {
   opacity: var(--opacity-disabled);
@@ -136,9 +141,12 @@ function onChange(e) {
   flex-shrink:     0;
 }
 
-.seneu-radio--sm   .seneu-radio__wrap { width: 16px; height: 16px; margin-top: 2px; }
-.seneu-radio--base .seneu-radio__wrap { width: 20px; height: 20px; margin-top: 1px; }
-.seneu-radio--lg   .seneu-radio__wrap { width: 24px; height: 24px; margin-top: 0;   }
+.seneu-radio--sm   .seneu-radio__wrap { width: 16px; height: 16px; }
+.seneu-radio--base .seneu-radio__wrap { width: 20px; height: 20px; }
+.seneu-radio--lg   .seneu-radio__wrap { width: 24px; height: 24px; }
+
+.seneu-radio--with-description.seneu-radio--sm   .seneu-radio__wrap { margin-top: 2px; }
+.seneu-radio--with-description.seneu-radio--base .seneu-radio__wrap { margin-top: 1px; }
 
 .seneu-radio__input {
   position: absolute;

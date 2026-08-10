@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.21.8] - 2026-08-10
+
+### Fixed
+- `SeneuCheckbox` and `SeneuRadio` vertically top-aligned the box/dot against the label instead of centering it, making a single-line label look like it trailed below center. Now centers by default (matching the pattern `SeneuToggle` already used correctly) and only top-aligns when a `description` is present, where aligning to the first line is the correct behavior. Verified this also mirrors correctly under `dir="rtl"` with zero extra CSS — the box moves to the right of the label automatically and stays perfectly centered, since the layout only ever used `display: flex` + `gap` (no hardcoded left/right offsets)
+
 ## [1.21.7] - 2026-08-10
 
 ### Changed
@@ -187,7 +192,8 @@ This release completes every component and cross-cutting concern in the CLAUDE.m
 - `SeneuIcon` (Material Symbols Rounded)
 - Vite library-mode build (ESM + UMD) with TypeScript declaration generation
 
-[1.21.7]: https://github.com/satriaperd/seneu-ui/compare/3b46888...HEAD
+[1.21.8]: https://github.com/satriaperd/seneu-ui/compare/806477b...HEAD
+[1.21.7]: https://github.com/satriaperd/seneu-ui/compare/3b46888...806477b
 [1.21.6]: https://github.com/satriaperd/seneu-ui/compare/3f9049a...3b46888
 [1.21.5]: https://github.com/satriaperd/seneu-ui/compare/592e8b3...3f9049a
 [1.21.4]: https://github.com/satriaperd/seneu-ui/compare/34713a5...592e8b3

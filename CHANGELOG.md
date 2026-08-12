@@ -4,6 +4,11 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.23.1] - 2026-08-12
+
+### Changed
+- README: added npm version and license badges, linked `CHANGELOG.md` (existed but was never referenced), and noted TypeScript `.d.ts` support (a real, already-shipped feature the README never claimed). First of a planned multi-phase documentation pass — the bigger gap, per-component usage/props docs beyond the Quick Start example, is still open
+
 ## [1.23.0] - 2026-08-12
 
 ### Added
@@ -210,7 +215,8 @@ This release completes every component and cross-cutting concern in the CLAUDE.m
 - `SeneuIcon` (Material Symbols Rounded)
 - Vite library-mode build (ESM + UMD) with TypeScript declaration generation
 
-[1.23.0]: https://github.com/satriaperd/seneu-ui/compare/ae1a94e...HEAD
+[1.23.1]: https://github.com/satriaperd/seneu-ui/compare/f3120e2...HEAD
+[1.23.0]: https://github.com/satriaperd/seneu-ui/compare/ae1a94e...f3120e2
 [1.22.0]: https://github.com/satriaperd/seneu-ui/compare/21babfe...ae1a94e
 [1.21.8]: https://github.com/satriaperd/seneu-ui/compare/806477b...21babfe
 [1.21.7]: https://github.com/satriaperd/seneu-ui/compare/3b46888...806477b

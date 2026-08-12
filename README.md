@@ -1,8 +1,11 @@
 # Seneu UI
 
+[![npm version](https://img.shields.io/npm/v/@cimang/seneu-ui.svg)](https://www.npmjs.com/package/@cimang/seneu-ui)
+[![license](https://img.shields.io/npm/l/@cimang/seneu-ui.svg)](LICENSE)
+
 A Vue 3 component library for building CMS and admin panels — pairs with Tailwind CSS, a two-layer design token system, and components that are accessible by default (WCAG 2.2 AA).
 
-> By Cimang Club. Brand color `#FC7A1E`.
+> By Cimang Club. Brand color `#FC7A1E`. See [CHANGELOG.md](CHANGELOG.md) for release history.
 
 ## Install
 
@@ -15,6 +18,8 @@ Vue 3.5+ is required as a peer dependency. ECharts is optional and only needed i
 ```bash
 npm install echarts   # optional, only needed for chart components
 ```
+
+TypeScript declarations (`.d.ts`) are generated for every component and composable and ship in the package — no `@types/` package or extra setup needed, editor autocomplete and prop types work out of the box in both `.ts` and `.vue` files.
 
 ## Quick Start
 

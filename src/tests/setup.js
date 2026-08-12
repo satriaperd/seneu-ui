@@ -42,3 +42,11 @@ if (!globalThis.matchMedia) {
     removeEventListener: vi.fn(),
   })
 }
+
+// jsdom doesn't implement pointer capture — used by SeneuColorPicker's
+// saturation/value square and hue slider to keep receiving pointermove
+// even if the cursor leaves the element bounds mid-drag.
+if (!Element.prototype.setPointerCapture) {
+  Element.prototype.setPointerCapture = () => {}
+  Element.prototype.releasePointerCapture = () => {}
+}

@@ -21,6 +21,7 @@ export { default as SeneuToggle }     from './components/form/SeneuToggle.vue'
 export { default as SeneuDatePicker }  from './components/form/SeneuDatePicker.vue'
 export { default as SeneuFileUpload }  from './components/form/SeneuFileUpload.vue'
 export { default as SeneuSearchBar }   from './components/form/SeneuSearchBar.vue'
+export { default as SeneuColorPicker } from './components/form/SeneuColorPicker.vue'
 
 // === Layout & Navigation ===
 export { default as SeneuSidebar } from './components/layout/SeneuSidebar.vue'

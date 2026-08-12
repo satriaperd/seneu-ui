@@ -168,7 +168,7 @@ All components below are built, tested, and WCAG 2.2 AA verified in both light a
 `SeneuIcon` · `useTheme` · `useToast` · `useConfirmDialog`
 
 **Form & Input**
-`SeneuButton` · `SeneuInput` · `SeneuTextarea` · `SeneuSelect` · `SeneuCheckbox` · `SeneuRadio` · `SeneuToggle` · `SeneuDatePicker` · `SeneuFileUpload` · `SeneuSearchBar`
+`SeneuButton` · `SeneuInput` · `SeneuTextarea` · `SeneuSelect` · `SeneuCheckbox` · `SeneuRadio` · `SeneuToggle` · `SeneuDatePicker` · `SeneuFileUpload` · `SeneuSearchBar` · `SeneuColorPicker`
 
 **Layout & Navigation**
 `SeneuSidebar` · `SeneuTopbar` · `SeneuBreadcrumb` · `SeneuTabs` · `SeneuPagination` · `SeneuStepper` · `SeneuFooter` · `SeneuCarousel` · `SeneuRichTextEditor`

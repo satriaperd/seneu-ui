@@ -24,6 +24,8 @@ export default [
         KeyboardEvent: 'readonly',
         Event: 'readonly',
         MouseEvent: 'readonly',
+        PointerEvent: 'readonly',
+        Element: 'readonly',
       },
     },
     rules: {

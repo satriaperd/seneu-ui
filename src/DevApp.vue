@@ -308,6 +308,7 @@ import SeneuToggleShowcase   from './dev/SeneuToggleShowcase.vue'
 import SeneuDatePickerShowcase from './dev/SeneuDatePickerShowcase.vue'
 import SeneuFileUploadShowcase from './dev/SeneuFileUploadShowcase.vue'
 import SeneuSearchBarShowcase from './dev/SeneuSearchBarShowcase.vue'
+import SeneuColorPickerShowcase from './dev/SeneuColorPickerShowcase.vue'
 import SeneuSidebarShowcase  from './dev/SeneuSidebarShowcase.vue'
 import SeneuTopbarShowcase   from './dev/SeneuTopbarShowcase.vue'
 import SeneuBreadcrumbShowcase from './dev/SeneuBreadcrumbShowcase.vue'
@@ -372,6 +373,7 @@ const componentCategories = [
       { id: 'SeneuDatePicker', name: 'Date Picker', category: 'Form', ready: true, showcase: SeneuDatePickerShowcase },
       { id: 'SeneuFileUpload', name: 'File Upload', category: 'Form', ready: true, showcase: SeneuFileUploadShowcase },
       { id: 'SeneuSearchBar',  name: 'Search Bar',  category: 'Form', ready: true, showcase: SeneuSearchBarShowcase },
+      { id: 'SeneuColorPicker', name: 'Color Picker', category: 'Form', ready: true, showcase: SeneuColorPickerShowcase },
     ],
   },
   {

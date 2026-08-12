@@ -4,6 +4,15 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.23.0] - 2026-08-12
+
+### Added
+- `SeneuColorPicker` — new component. Saturation/value square + hue slider, with switchable HEX/RGB/HSL/HSV text inputs inside the popover for typing an exact value in whichever format is convenient. The `format` prop (`hex` default, or `rgb`/`hsl`/`hsv`) controls what string shape `v-model` reads from and emits — the in-popover format tabs are purely a display/input convenience and don't affect it
+  - Full keyboard support: arrow keys nudge saturation/value on the SV square and hue on the slider (Shift for a ×10 step), Home/End jump the hue slider to its ends — dragging isn't the only way to operate it
+  - Optional `presets` prop for a quick-pick swatch row; `clearable`, `loading`, `disabled`, `hint`/`error`, and `sm`/`base`/`lg` sizes match every other form field's API
+  - Fixed a real rounding bug during development, not just a test artifact: converting a color through integer-rounded HSV and back (`hsvToRgb(rgbToHsv(rgb))`) can land ±1 off per channel — e.g. `#FC7A1E` in, `#FC7B1E` shown, with zero user interaction. The picker now keeps the exact input color authoritative (a preset click, a typed hex/RGB value, or the initial `modelValue`) until the user actually manipulates HSV space directly (dragging or arrow-keying the SV square/hue slider, or typing HSL/HSV numbers) — only then does HSV math legitimately take over
+  - 44 new Vitest tests covering format parsing/emission in all 4 directions, keyboard nav, pointer drag, presets, and the exactness-preservation behavior above
+
 ## [1.22.0] - 2026-08-10
 
 ### Added
@@ -201,7 +210,8 @@ This release completes every component and cross-cutting concern in the CLAUDE.m
 - `SeneuIcon` (Material Symbols Rounded)
 - Vite library-mode build (ESM + UMD) with TypeScript declaration generation
 
-[1.22.0]: https://github.com/satriaperd/seneu-ui/compare/21babfe...HEAD
+[1.23.0]: https://github.com/satriaperd/seneu-ui/compare/ae1a94e...HEAD
+[1.22.0]: https://github.com/satriaperd/seneu-ui/compare/21babfe...ae1a94e
 [1.21.8]: https://github.com/satriaperd/seneu-ui/compare/806477b...21babfe
 [1.21.7]: https://github.com/satriaperd/seneu-ui/compare/3b46888...806477b
 [1.21.6]: https://github.com/satriaperd/seneu-ui/compare/3f9049a...3b46888

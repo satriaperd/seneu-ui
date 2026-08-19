@@ -4,6 +4,28 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.0] - 2026-08-19
+
+### Changed — BREAKING
+- **`useConfirmDialog().confirm()` now resolves a string action id instead of a boolean.** Previously `true`/`false` for confirm/cancel; now `'confirm' | 'discard' | 'cancel' | 'additional'` — `'cancel'` also covers backdrop click, Escape, and the close button, same as before. Update any code doing `const ok = await confirm(...)` truthy checks to compare against `'confirm'` explicitly:
+  ```diff
+  - const ok = await confirm({ title: 'Delete?' })
+  - if (ok) { ... }
+  + const action = await confirm({ title: 'Delete?' })
+  + if (action === 'confirm') { ... }
+  ```
+  This was necessary to support more than a single confirm/cancel pair of buttons — see below.
+
+### Added
+- `SeneuConfirmDialog` now has 3 sizes (`size: 'small' | 'medium' | 'large'`, default `'medium'`) with different content/button expectations:
+  - **small** — Confirm + Cancel only; icon and description are both optional.
+  - **medium** — adds an optional Discard (secondary CTA, `discardLabel`); icon is optional, description is expected.
+  - **large** — adds an optional Additional action (`additionalLabel`/`onAdditional`), visually separated from the Confirm/Discard/Cancel group on the left; icon is always shown (falls back to the variant's default icon).
+  - Discard and Additional are opt-in per call regardless of size — they only render when their label is passed, so a `size: 'large'` call with just `confirmLabel`/`cancelLabel` still shows only 2 buttons.
+  - Button order is fixed left-to-right: Additional (separated) · Cancel · Discard · Confirm — Cancel always leftmost of the three grouped buttons, primary action always rightmost. Discard and Cancel both use the neutral/default button style; only Confirm follows the dialog's `variant` (brand/success/warning/danger/info).
+  - Title and description moved out of the modal header into the dialog body, stacked with the icon (icon → title → description), left-aligned, with a tighter gap between title and description than between the icon and the text block.
+  - Each button shows its own loading spinner (via the new `loadingAction` state) when its `onConfirm`/`onDiscard`/`onAdditional` callback is pending, rather than one shared loading flag.
+
 ## [1.23.1] - 2026-08-12
 
 ### Changed
@@ -215,7 +237,8 @@ This release completes every component and cross-cutting concern in the CLAUDE.m
 - `SeneuIcon` (Material Symbols Rounded)
 - Vite library-mode build (ESM + UMD) with TypeScript declaration generation
 
-[1.23.1]: https://github.com/satriaperd/seneu-ui/compare/f3120e2...HEAD
+[2.0.0]: https://github.com/satriaperd/seneu-ui/compare/c7c45b6...HEAD
+[1.23.1]: https://github.com/satriaperd/seneu-ui/compare/f3120e2...c7c45b6
 [1.23.0]: https://github.com/satriaperd/seneu-ui/compare/ae1a94e...f3120e2
 [1.22.0]: https://github.com/satriaperd/seneu-ui/compare/21babfe...ae1a94e
 [1.21.8]: https://github.com/satriaperd/seneu-ui/compare/806477b...21babfe

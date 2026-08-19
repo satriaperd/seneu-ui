@@ -1,15 +1,24 @@
 <script setup>
+import { computed } from 'vue'
 import SeneuModal from './SeneuModal.vue'
 import SeneuButton from '../form/SeneuButton.vue'
 import SeneuIcon from '../display/SeneuIcon.vue'
 import { useConfirmDialog } from '../../composables/useConfirmDialog.js'
 
 /**
- * Promise-based confirmation dialog — the visual half of `useConfirmDialog`.
+ * Multi-action confirmation dialog — the visual half of `useConfirmDialog`.
  * Mount this once near your app root; every `confirm()` call anywhere in
  * the app renders through this single instance.
+ *
+ * Three sizes cap how much content/how many buttons make sense:
+ * - small:  Confirm + Cancel only. Icon and description are optional.
+ * - medium: adds an optional Discard (secondary CTA). Icon is optional,
+ *           description is expected.
+ * - large:  adds an optional Additional action, visually separated from
+ *           the Confirm/Discard/Cancel group. Icon, title, and
+ *           description are all expected.
  */
-const { visible, options, isLoading, handleConfirm, handleCancel } = useConfirmDialog()
+const { visible, options, isLoading, loadingAction, handleConfirm, handleDiscard, handleAdditional, handleCancel } = useConfirmDialog()
 
 const VARIANT_ICONS = {
   default: 'help',
@@ -28,13 +37,28 @@ const CONFIRM_BUTTON_VARIANT = {
   danger: 'danger',
   info: 'info',
 }
+
+const MODAL_SIZE = { small: 'sm', medium: 'base', large: 'lg' }
+
+const size = computed(() => options.value.size || 'medium')
+const modalSize = computed(() => MODAL_SIZE[size.value] || 'base')
+
+// Icon: always shown on 'large' (falls back to the variant's default icon).
+// On 'medium'/'small' it's optional — only shown if the caller explicitly
+// passed one.
+const showIcon = computed(() => size.value === 'large' || !!options.value.icon)
+const resolvedIcon = computed(() => options.value.icon || VARIANT_ICONS[options.value.variant || 'default'])
+
+// Buttons are capped per size regardless of what the caller passed in —
+// small never shows Discard/Additional, medium never shows Additional.
+const showDiscard = computed(() => size.value !== 'small' && !!options.value.discardLabel)
+const showAdditional = computed(() => size.value === 'large' && !!options.value.additionalLabel)
 </script>
 
 <template>
   <SeneuModal
     :model-value="visible"
-    :title="options.title"
-    size="sm"
+    :size="modalSize"
     :close-on-backdrop="!isLoading"
     :close-on-esc="!isLoading"
     :show-close="!isLoading"
@@ -43,21 +67,46 @@ const CONFIRM_BUTTON_VARIANT = {
   >
     <div class="seneu-confirm-dialog__body">
       <div
+        v-if="showIcon"
         class="seneu-confirm-dialog__icon-wrap"
         :class="`seneu-confirm-dialog__icon-wrap--${options.variant || 'default'}`"
       >
-        <SeneuIcon :name="options.icon || VARIANT_ICONS[options.variant || 'default']" :size="26" />
+        <SeneuIcon :name="resolvedIcon" :size="26" />
       </div>
-      <p v-if="options.message" class="seneu-confirm-dialog__message">{{ options.message }}</p>
+      <div class="seneu-confirm-dialog__text">
+        <h2 class="seneu-confirm-dialog__title">{{ options.title }}</h2>
+        <p v-if="options.message" class="seneu-confirm-dialog__message">{{ options.message }}</p>
+      </div>
     </div>
 
     <template #footer>
+      <SeneuButton
+        v-if="showAdditional"
+        variant="default"
+        class="seneu-confirm-dialog__additional"
+        :disabled="isLoading && loadingAction !== 'additional'"
+        :loading="loadingAction === 'additional'"
+        @click="handleAdditional"
+      >
+        {{ options.additionalLabel }}
+      </SeneuButton>
+
       <SeneuButton variant="default" :disabled="isLoading" @click="handleCancel">
         {{ options.cancelLabel }}
       </SeneuButton>
       <SeneuButton
+        v-if="showDiscard"
+        variant="default"
+        :disabled="isLoading && loadingAction !== 'discard'"
+        :loading="loadingAction === 'discard'"
+        @click="handleDiscard"
+      >
+        {{ options.discardLabel }}
+      </SeneuButton>
+      <SeneuButton
         :variant="CONFIRM_BUTTON_VARIANT[options.variant || 'default']"
-        :loading="isLoading"
+        :disabled="isLoading && loadingAction !== 'confirm'"
+        :loading="loadingAction === 'confirm'"
         @click="handleConfirm"
       >
         {{ options.confirmLabel }}
@@ -70,10 +119,16 @@ const CONFIRM_BUTTON_VARIANT = {
 .seneu-confirm-dialog__body {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-stack-normal);
-  text-align: center;
+  text-align: left;
   padding: var(--space-inline-tight) 0;
+}
+
+.seneu-confirm-dialog__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-stack-tight);
 }
 
 /* ── Icon ──────────────────────────────────────────────── */
@@ -113,11 +168,24 @@ const CONFIRM_BUTTON_VARIANT = {
   --seneu-confirm-icon-color: var(--color-text-info);
 }
 
-/* ── Message ───────────────────────────────────────────── */
+/* ── Title / Message ───────────────────────────────────── */
+.seneu-confirm-dialog__title {
+  margin: 0;
+  font-size: var(--font-size-lead);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-default);
+  line-height: var(--line-height-tight);
+}
+
 .seneu-confirm-dialog__message {
   margin: 0;
   font-size: var(--font-size-body);
   color: var(--color-text-muted);
   line-height: var(--line-height-relaxed);
+}
+
+/* ── Footer: additional action sits apart from the main group ─ */
+.seneu-confirm-dialog__additional {
+  margin-right: auto;
 }
 </style>

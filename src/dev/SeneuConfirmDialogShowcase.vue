@@ -9,55 +9,109 @@ import DevShowcaseSection from './DevShowcaseSection.vue'
 const { confirm } = useConfirmDialog()
 const lastResult = ref('')
 
-async function askBasic() {
-  const ok = await confirm({ title: 'Discard changes?', message: 'Your unsaved edits will be lost.' })
-  lastResult.value = ok ? 'Confirmed: discard changes' : 'Cancelled'
+async function askSmall() {
+  const action = await confirm({
+    size: 'small',
+    title: 'Discard changes?',
+  })
+  lastResult.value = `small -> ${action}`
 }
 
-async function askDanger() {
-  const ok = await confirm({
+async function askMedium() {
+  const action = await confirm({
+    size: 'medium',
+    title: 'Discard changes?',
+    message: 'Your unsaved edits will be lost.',
+  })
+  lastResult.value = `medium -> ${action}`
+}
+
+async function askMediumWithIcon() {
+  const action = await confirm({
+    size: 'medium',
+    title: 'Leave without saving?',
+    message: 'You have unsaved changes in this form.',
+    variant: 'warning',
+    icon: 'warning',
+    confirmLabel: 'Leave',
+  })
+  lastResult.value = `medium (icon) -> ${action}`
+}
+
+async function askMediumWithDiscard() {
+  const action = await confirm({
+    size: 'medium',
+    title: 'Unsaved changes',
+    message: 'Save your edits before leaving this page?',
+    confirmLabel: 'Save',
+    discardLabel: 'Discard',
+  })
+  lastResult.value = `medium (+discard) -> ${action}`
+}
+
+async function askLarge() {
+  const action = await confirm({
+    size: 'large',
     title: 'Delete this post?',
     message: 'This action cannot be undone.',
     variant: 'danger',
     confirmLabel: 'Delete',
   })
-  lastResult.value = ok ? 'Confirmed: post deleted' : 'Cancelled'
+  lastResult.value = `large -> ${action}`
 }
 
-async function askWarning() {
-  const ok = await confirm({
-    title: 'Leave without saving?',
-    message: 'You have unsaved changes in this form.',
-    variant: 'warning',
-    confirmLabel: 'Leave',
+async function askLargeFull() {
+  const action = await confirm({
+    size: 'large',
+    title: 'Unsaved changes',
+    message: 'You have unsaved edits. Choose what to do before leaving this page.',
+    confirmLabel: 'Save',
+    discardLabel: 'Discard',
+    cancelLabel: 'Cancel',
+    additionalLabel: 'Preview changes',
+    onAdditional: () => new Promise(resolve => setTimeout(resolve, 800)),
   })
-  lastResult.value = ok ? 'Confirmed: left the page' : 'Cancelled'
+  lastResult.value = `large (full 4-button) -> ${action}`
 }
 
 async function askAsync() {
-  const ok = await confirm({
+  const action = await confirm({
+    size: 'medium',
     title: 'Publish this article?',
     message: 'It will be visible to everyone immediately.',
     variant: 'success',
     confirmLabel: 'Publish',
     onConfirm: () => new Promise(resolve => setTimeout(resolve, 1500)),
   })
-  lastResult.value = ok ? 'Confirmed: published (after a simulated 1.5s request)' : 'Cancelled'
+  lastResult.value = `async -> ${action}`
 }
 </script>
 
 <template>
   <DevShowcase>
 
-    <DevShowcaseSection title="Basic">
-      <SeneuButton variant="default" @click="askBasic">Discard changes</SeneuButton>
+    <DevShowcaseSection title="Small — Confirm + Cancel only, icon & description optional">
+      <SeneuButton variant="default" @click="askSmall">Discard changes (small)</SeneuButton>
     </DevShowcaseSection>
 
-    <DevShowcaseSection title="Variants">
+    <DevShowcaseSection title="Medium — icon optional, description expected">
       <div class="showcase-row">
-        <SeneuButton variant="danger" @click="askDanger">Delete post</SeneuButton>
-        <SeneuButton variant="warning" @click="askWarning">Leave page</SeneuButton>
+        <SeneuButton variant="default" @click="askMedium">No icon</SeneuButton>
+        <SeneuButton variant="warning" @click="askMediumWithIcon">With icon</SeneuButton>
+        <SeneuButton variant="default" @click="askMediumWithDiscard">With Discard (secondary CTA)</SeneuButton>
       </div>
+    </DevShowcaseSection>
+
+    <DevShowcaseSection title="Large — icon always shown, up to 4 buttons">
+      <div class="showcase-row">
+        <SeneuButton variant="danger" @click="askLarge">Delete (Confirm + Cancel)</SeneuButton>
+        <SeneuButton variant="brand" @click="askLargeFull">Full set (Save / Discard / Cancel / Additional)</SeneuButton>
+      </div>
+      <p class="showcase-caption">
+        Discard and Additional are opt-in per call — pass <code>discardLabel</code> / <code>additionalLabel</code>
+        only when you need them, even at size "large". The Additional button sits apart from the
+        Confirm/Discard/Cancel group on the left.
+      </p>
     </DevShowcaseSection>
 
     <DevShowcaseSection title="Async onConfirm (Loading State)">

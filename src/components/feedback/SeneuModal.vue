@@ -112,7 +112,7 @@ onBeforeUnmount(() => {
         @keydown="handleKeydown"
       >
         <div ref="dialogRef" class="seneu-modal-dialog" :class="`seneu-modal-dialog--${size}`" tabindex="-1" @click.stop>
-          <div class="seneu-modal__header">
+          <div v-if="title || showClose || $slots.header" class="seneu-modal__header">
             <slot name="header">
               <span :id="titleId" class="seneu-modal__title">{{ title }}</span>
               <button

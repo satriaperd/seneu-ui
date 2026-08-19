@@ -1,6 +1,6 @@
 {
   "name": "@cimang/seneu-ui",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Vue 3 component library for CMS and admin panel — by Cimang Club",
   "type": "module",
   "publishConfig": {

@@ -4,6 +4,12 @@ All notable changes to this project are documented in this file.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.1] - 2026-08-19
+
+### Changed
+- `SeneuConfirmDialog` no longer shows a header bar or close (×) button — Cancel and Escape already close it, so the extra dismiss affordance was redundant chrome
+- `SeneuModal`: the header bar now only renders when there's actually something in it (`title`, `showClose`, or a `#header` slot) — previously it always rendered as an empty bar with a bottom border when none of those were set. This is what let the fix above work without any modal-specific override; existing usage with a title and/or `showClose` (the default) is unaffected
+
 ## [2.0.0] - 2026-08-19
 
 ### Changed — BREAKING
@@ -237,7 +243,8 @@ This release completes every component and cross-cutting concern in the CLAUDE.m
 - `SeneuIcon` (Material Symbols Rounded)
 - Vite library-mode build (ESM + UMD) with TypeScript declaration generation
 
-[2.0.0]: https://github.com/satriaperd/seneu-ui/compare/c7c45b6...HEAD
+[2.0.1]: https://github.com/satriaperd/seneu-ui/compare/aa0f781...HEAD
+[2.0.0]: https://github.com/satriaperd/seneu-ui/compare/c7c45b6...aa0f781
 [1.23.1]: https://github.com/satriaperd/seneu-ui/compare/f3120e2...c7c45b6
 [1.23.0]: https://github.com/satriaperd/seneu-ui/compare/ae1a94e...f3120e2
 [1.22.0]: https://github.com/satriaperd/seneu-ui/compare/21babfe...ae1a94e

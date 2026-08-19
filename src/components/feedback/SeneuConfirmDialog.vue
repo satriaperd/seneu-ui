@@ -61,7 +61,7 @@ const showAdditional = computed(() => size.value === 'large' && !!options.value.
     :size="modalSize"
     :close-on-backdrop="!isLoading"
     :close-on-esc="!isLoading"
-    :show-close="!isLoading"
+    :show-close="false"
     @update:model-value="handleCancel"
     @close="handleCancel"
   >
